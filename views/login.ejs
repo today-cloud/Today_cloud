@@ -4,9 +4,19 @@
         
     </head>
     <body>
-        <label>여기는 아이디</label>
-        <label>여기는 비밀번호</label>
-        <label>여기는 이름</label>
-        <label>여기는 이름</label>
+    <h2>여기는 로그인 페이지 입니다.</h2>
+        <form action="../login_s" method="post">
+            <div>
+                <input type="text" name="user_Eid" placeholder="아이디를 입력해주세요.">
+                <label for="floatingInput">이름</label>
+            </div>
+            <div>
+                <input type="password" name="user_Pw" placeholder="비밀번호를 입력해주세요.">
+                <label>Password</label>
+            </div>
+            <div>
+                <button class="btn" type="submit">Sign in</button>
+            </div>
+        </form>
     </body>
 </html>
