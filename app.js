@@ -4,13 +4,23 @@
 const express = require( 'express' );
 const path = require( 'path' );
 const app = express();
+const mysql = require( 'mysql' );
+
+var conn = mysql.createConnection({
+	user: 'root',
+	password: '1234',
+	database: 'cloud'
+});
 
 // const port = 8000;
-// const body = require( 'body-parser' );
+const body = require( 'body-parser' );
 
 // view의 확장인 ejs 를 사용하도록 도와주는 장치
-// app.set( 'view engine', 'ejs'); 
-// app.set( 'views', __dirname + '/views');
+app.set( 'view engine', 'ejs'); 
+app.set( 'views', __dirname + '/views');
+
+app.use(body.urlencoded({extends:false}));
+app.use(body.json());
 
 const http = require('http').createServer(app);
 http.listen(8000, function(){
@@ -26,11 +36,30 @@ app.get( '/react', ( req, res ) => {
 });
 
 app.get( '/', ( req, res ) => {
+    console.log(conn);
     // res.sendFile( path.join(__dirname, 'views/main.html') )
-    res.sendFile( path.join(__dirname, 'react_today/build/index.html') )
+    // res.sendFile( path.join(__dirname, 'react_today/build/index.html') )
+    res.render('mainTest');
 });
 
+// 회원가입 테스트 했습니다.-윤영우-
+app.post('/mainTest',(req,res)=>{
 
+    res.send('일단 전송됨');
+    console.log(req.body);
+    var sql = "INSERT INTO T_User (user_Eid, user_Pw, user_Name) values('"+ req.body.eid +"','" +req.body.password +"','"+req.body.name+"');";
+    // insert into T_User(user_Eid, user_Pw, user_Name) values('aaa@naver.com','1234','홍길동');
+
+    conn.query(sql, function(err, result) {
+        if( err ){
+			console.log( 'failed!! : ' + err );
+		}
+		else {
+			console.log( "data inserted!" );
+		}
+    });
+
+});
 
 // ################################ 회원가입 #################################
 app.get( '/signup', ( req, res ) => {
