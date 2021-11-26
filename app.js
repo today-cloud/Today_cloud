@@ -38,8 +38,8 @@ app.get( '/react', ( req, res ) => {
 app.get( '/', ( req, res ) => {
     console.log(conn);
     // res.sendFile( path.join(__dirname, 'views/main.html') )
-    // res.sendFile( path.join(__dirname, 'react_today/build/index.html') )
-    res.render('mainTest');
+    res.sendFile( path.join(__dirname, 'react_today/build/index.html') )
+    // res.render('mainTest');
 });
 
 // 회원가입 테스트 했습니다.-윤영우-
