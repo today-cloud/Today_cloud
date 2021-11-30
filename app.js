@@ -5,12 +5,19 @@ const express = require( 'express' );
 const path = require( 'path' );
 const app = express();
 const mysql = require( 'mysql' );
+const session = require('express-session');
 
 var conn = mysql.createConnection({
 	user: 'root',
 	password: '1234',
 	database: 'cloud'
 });
+
+app.use(session({
+    secret : 'customer',
+    resave : false,
+    saveUninitialized : true,
+}));
 
 // const port = 8000;
 const body = require( 'body-parser' );
@@ -72,24 +79,20 @@ app.get( '/login', ( req, res ) => {
     res.render('login');
 });
 app.post( '/login', ( req, res ) => {
-    var eid = req.body.eid;
-    var password = req.body.password;
-    
-    //var sql = "select * from T_User where user_Eid = "+eid+"and user_Pw = "+password+";";
-    var sql = `select * from T_User where user_Eid = ${eid} and user_Pw = ${password};`;
-    //var sql = "select * from T_User where user_Eid = " + req.body.eid+" and user_Pw =" +req.body.password+";";
+    const eid = req.body.user_Eid;
+    const password = req.body.user_Pw;
+    var sql = "select * from T_User where user_Eid = '" + eid +"' and user_Pw ='" +password+"';";
 
-    conn.query(sql, function(err, result,fields) {
-        console.log("필드 : "+fields);
-        console.log(result);
-        console.log(eid);
-        console.log(password);
-        // if (results.length == 0){
-        //     res.send('없다');
-        // }else{
-        //     console.log(results[0]["id"]);
-        //     res.send(req.body.eid+"<br>"+req.body.password+"")
-        // }
+    conn.query(sql, function(err, result) {
+        if (result.length == 0){
+            res.render('login');
+        }else{
+            req.session.uid = result[0].user_Num;
+            req.session.save(function(err){
+                console.log(req.session.uid);
+                res.render('main');
+            });
+        }
     });
     // res.send(req.body.eid+""+req.body.password+"");
 });
