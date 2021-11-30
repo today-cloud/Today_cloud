@@ -12,12 +12,7 @@ import { Button } from 'react-bootstrap';
 import "./common.css";
 import "./Signup.css";
 
-function Signup() {
-    const onChange = (e) => {
-    };
-
-    const onReset = () => {
-    };
+function Login() {
 
     return (
         <div>
@@ -45,8 +40,6 @@ function Signup() {
                         <div>
                         <Form.Control size="lg" type="text" placeholder="이름(이메일)을 입력해주세요"/>
                         <Form.Control size="lg" type="text" placeholder="비밀번호를 입력해주세요"/>
-                        <Form.Control size="lg" type="text" placeholder="비밀번호를 재입력해주세요"/>
-                        <Form.Control size="lg" type="text" placeholder="별명을 입력해주세요"/>
                         </div>
                         <div class="all_button">
                             <button>로그인</button>
@@ -65,4 +58,4 @@ function Signup() {
     );
 }
 
-export default Signup;
+export default Login;
