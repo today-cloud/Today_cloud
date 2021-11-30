@@ -83,15 +83,22 @@ app.post( '/login', ( req, res ) => {
     const eid = req.body.user_Eid;
     const password = req.body.user_Pw;
     var sql = "select * from T_User where user_Eid = '" + eid +"' and user_Pw ='" +password+"';";
-
+    var board_sql = "select * from T_Board order by board_Date desc;";
+    var board;
     conn.query(sql, function(err, result) {
         if (result.length == 0){
             res.render('login');
         }else{
             req.session.uid = result[0].user_Num;
             req.session.save(function(err){
-                console.log(req.session.uid);
-                res.render('main');
+                conn.query(board_sql,function(err, results){
+                    if(results.length == 0){
+                    } else{
+                        console.log(results);
+                        board = results;
+                        res.render('main',{user:result[0],board_list:board});
+                    }
+                });
             });
         }
     });
