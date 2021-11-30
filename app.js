@@ -71,6 +71,30 @@ app.get( '/signup', ( req, res ) => {
 app.get( '/login', ( req, res ) => {
     res.render('login');
 });
+app.post( '/login', ( req, res ) => {
+    var eid = req.body.eid;
+    var password = req.body.password;
+    
+    //var sql = "select * from T_User where user_Eid = "+eid+"and user_Pw = "+password+";";
+    var sql = `select * from T_User where user_Eid = ${eid} and user_Pw = ${password};`;
+    //var sql = "select * from T_User where user_Eid = " + req.body.eid+" and user_Pw =" +req.body.password+";";
+
+    conn.query(sql, function(err, result,fields) {
+        console.log("필드 : "+fields);
+        console.log(result);
+        console.log(eid);
+        console.log(password);
+        // if (results.length == 0){
+        //     res.send('없다');
+        // }else{
+        //     console.log(results[0]["id"]);
+        //     res.send(req.body.eid+"<br>"+req.body.password+"")
+        // }
+    });
+    // res.send(req.body.eid+""+req.body.password+"");
+});
+
+
 // ################################ 회원 정보 수정 #################################
 app.get( '/update', ( req, res ) => {
     res.render('update');
