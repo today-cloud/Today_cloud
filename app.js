@@ -84,7 +84,9 @@ app.post( '/login', ( req, res ) => {
     const password = req.body.user_Pw;
     var sql = "select * from T_User where user_Eid = '" + eid +"' and user_Pw ='" +password+"';";
     var board_sql = "select * from T_Board order by board_Date desc;";
+    var tag_sql = "select tag_Tagname,count(tag_Tagname)as coun from T_Tag group by tag_Tagname order by coun desc limit 5;";
     var board;
+    var tag;
     conn.query(sql, function(err, result) {
         if (result.length == 0){
             res.render('login');
@@ -96,7 +98,13 @@ app.post( '/login', ( req, res ) => {
                     } else{
                         console.log(results);
                         board = results;
-                        res.render('main',{user:result[0],board_list:board});
+                        conn.query(tag_sql,function(err, results){
+                           if(results.length == 0){
+                           } else{
+                               tag = results;
+                               res.render('main',{user:result[0],board_list:board,tag_list:tag});
+                           }
+                        });
                     }
                 });
             });
