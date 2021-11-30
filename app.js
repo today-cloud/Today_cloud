@@ -51,20 +51,6 @@ app.get( '/', ( req, res ) => {
     // ##################react 불러오는 곳#########################
     // res.sendFile( path.join(__dirname, 'react_today/build/index.html') )
 });
-app.post('/mainTest',(req,res)=>{
-    res.send('일단 전송됨');
-    console.log(req.body);
-    var sql = "INSERT INTO T_User (user_Eid, user_Pw, user_Name) values('"+ req.body.eid +"','" +req.body.password +"','"+req.body.name+"');";
-    // insert into T_User(user_Eid, user_Pw, user_Name) values('aaa@naver.com','1234','홍길동');
-    conn.query(sql, function(err, result) {
-        if( err ){
-			console.log( 'failed!! : ' + err );
-		}
-		else {
-			console.log( "data inserted!" );
-		}
-    });
-});
 
 // ################################ index확인하는 곳 #################################
 app.get( '/indexAll', ( req, res ) => {
@@ -74,6 +60,21 @@ app.get( '/indexAll', ( req, res ) => {
 app.get( '/signup', ( req, res ) => {
     res.render('signup');
 });
+
+app.post('/signup',(req,res)=>{
+    var sql = "INSERT INTO T_User (user_Eid, user_Pw, user_Name) values('"+ req.body.user_Eid +"','" +req.body.user_Pw +"','"+req.body.user_Name+"');";
+    // insert into T_User(user_Eid, user_Pw, user_Name) values('aaa@naver.com','1234','홍길동');
+    conn.query(sql, function(err, result) {
+        if( err ){
+            console.log( 'failed!! : ' + err );
+        }
+        else {
+            console.log( "data inserted!" );
+            res.render('login');
+        }
+    });
+});
+
 // ################################ 로그인 #################################
 app.get( '/login', ( req, res ) => {
     res.render('login');

@@ -5,25 +5,25 @@
 </head>
 <body>
     <h2>여기는 회원가입 페이지 입니다.</h2>
-    <form action="../signup_s/" onsubmit="return ccheck()" method="post" name="info">
+    <form action="signup" onsubmit="return ccheck()" method="post" name="info">
         <div>
-            <input type="text" name="user_Name" placeholder="이름을 입력해주세요.">
+            <input type="text" name="user_Name" placeholder="이름을 입력해주세요." required>
             <label>이름</label>
         </div>
         <div>
-            <input type="text" class="form-control" id="id1" name="user_Eid" placeholder="E-mail 입력"/>
+            <input type="text" class="form-control" id="id1" name="user_Eid" placeholder="E-mail 입력" required/>
             <label>이메일</label>
         </div>
         <div>
-            <input type="text" id="id2" name="user_Eid" placeholder="E-mail 을 확인해주세요"/>
+            <input type="text" id="id2" placeholder="E-mail 을 확인해주세요" required/>
             <label id="check1">이메일 확인</label>
         </div>
         <div>
-            <input type="password" id="pwd1" name="user_Pw" placeholder="비밀번호를 입력해주세요."/>
+            <input type="password" id="pwd1" name="user_Pw" placeholder="비밀번호를 입력해주세요." required/>
             <label>비밀번호</label>
         </div>
         <div>
-            <input type="password" id="pwd2" placeholder="비밀번호를 확인해주세요." onchange="confirm1()"/>
+            <input type="password" id="pwd2" placeholder="비밀번호를 확인해주세요." onchange="confirm1()" required/>
             <label id="check2">비밀번호 확인</label>
         </div>
         <button type="submit">Sign in</button>
