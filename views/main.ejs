@@ -1,0 +1,17 @@
+<h2>여기는 메인 페이지 입니다.</h2>
+<%=user.user_Num%>
+
+<%
+    for(var i=0;i<board_list.length;i++){
+%>
+        <h3><%=board_list[i].board_Tittle%></h3>
+<%
+    }
+%>
+<%
+    for(var i = 0; i<tag_list.length;i++){
+%>
+        <h2><%=tag_list[i].tag_Tagname%></h2>
+<%
+    }
+%>

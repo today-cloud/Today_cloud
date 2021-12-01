@@ -4,9 +4,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    margin-top: 3%;
 }
 
 body {
-    background: #EBEFF2;
-    padding: 0 13%;
+    height: 100vh;
+    background: #e6f4ff;
+    padding: 0 10%;
+}
+
+@media (max-width: 600px) {
+    body {
+        height: 100vh;
+        background: #e6f4ff;
+        padding: 0 1.5%;
+    }
 }

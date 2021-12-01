@@ -21,21 +21,21 @@ aside.aside_box {
 }
 
 .circle {
-    height: 60px;
+    height: 55px;
     mix-blend-mode: normal;
     opacity: 0.5;
     border-radius: 27px;
-    text-align: center;
     background: #AACBDB;
 }
 
 .c_inbox {
-    width: 575px;
-    height: 40px;
+    margin-top: 4px;
+    width: auto;
+    height: 38px;
     background: #EEEEEE;
     border-radius: 16px;
 }
 
-.board_box {
-    width: 400px;
+.text_input {
+    margin-top: -20px;
 }
