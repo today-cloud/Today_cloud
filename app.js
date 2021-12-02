@@ -4,9 +4,9 @@ const path = require( 'path' );
 const app = express();
 const mysql = require( 'mysql' );
 const session = require('express-session');
-
 const user = require('./routes/user')(app);
 app.use('/', user);
+
 
 var conn = mysql.createConnection({
   user: 'root',
@@ -69,13 +69,6 @@ app.post('/mainTest',(req,res)=>{
 });
 app.use( express.static(path.join(__dirname, 'static') ) )
 
-// 회원가입 테스트 했습니다.-윤영우-
-app.get( '/', ( req, res ) => {
-  console.log(conn);
-  res.render('mainTest');
-  // ##################react 불러오는 곳#########################
-  // res.sendFile( path.join(__dirname, 'react_today/build/index.html') )
-});
 
 // ################################ index확인하는 곳 #################################
 app.get( '/indexAll', ( req, res ) => {
