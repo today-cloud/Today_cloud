@@ -35,10 +35,9 @@ http.listen(8000, function(){
   console.log('listening on 8000')
 });
 app.use( '/', express.static(path.join(__dirname, 'views') ) )
-<<<<<<< HEAD
 // app.use( express.static(path.join(__dirname, 'static') ) )
 // ##################react 불러오는 곳#########################
-app.use( '/react', express.static(path.join(__dirname, 'react_today/build') ) )
+app.use( '/react', express.static(path.join(__dirname, 'react_today/build') ) );
 
 // ##################react 불러오는 곳#########################
 // app.get( '/react', ( req, res ) => {
@@ -49,10 +48,11 @@ app.use( '/react', express.static(path.join(__dirname, 'react_today/build') ) )
 // 회원가입 테스트 했습니다.-윤영우-
 app.get( '/', ( req, res ) => {
     console.log(conn);
-    // res.render('mainTest');
+    //res.render('mainTest');
     // ##################react 불러오는 곳#########################
     res.sendFile( path.join(__dirname, 'react_today/build/index.html') )
 });
+
 app.post('/mainTest',(req,res)=>{
     res.send('일단 전송됨');
     console.log(req.body);
@@ -60,13 +60,13 @@ app.post('/mainTest',(req,res)=>{
     // insert into T_User(user_Eid, user_Pw, user_Name) values('aaa@naver.com','1234','홍길동');
     conn.query(sql, function(err, result) {
         if( err ){
-			console.log( 'failed!! : ' + err );
-		}
-		else {
-			console.log( "data inserted!" );
-		}
+            console.log( 'failed!! : ' + err );
+        }
+        else {
+            console.log( "data inserted!" );
+        }
     });
-=======
+});
 app.use( express.static(path.join(__dirname, 'static') ) )
 
 // 회원가입 테스트 했습니다.-윤영우-
@@ -75,7 +75,6 @@ app.get( '/', ( req, res ) => {
   res.render('mainTest');
   // ##################react 불러오는 곳#########################
   // res.sendFile( path.join(__dirname, 'react_today/build/index.html') )
->>>>>>> 5aeff90278c2d2dde979f21b938d3dee4b875134
 });
 
 // ################################ index확인하는 곳 #################################
@@ -85,8 +84,9 @@ app.get( '/indexAll', ( req, res ) => {
 
 // ################################ gps확인하는 곳 #################################
 app.get( '/gps', ( req, res ) => {
-  res.render('gps');
+    res.render('gps');
 });
+
 
 // ##################react 불러오는 곳#########################
 // app.use( '/react', express.static(path.join(__dirname, 'react_today/build') ) )
