@@ -92,7 +92,7 @@ app.post('/signup', (req, res) => {
       console.log( 'failed!! : ' + err );
     }
     else {
-      console.log(req.body);
+      console.log(req.body.user_Eid);
       console.log( "data inserted!" );
       res.render('login');
     }
@@ -101,6 +101,7 @@ app.post('/signup', (req, res) => {
 
 // ################################ 로그인 #################################
 app.get( '/login', ( req, res ) => {
+  req.session.uid;
   res.render('login');
 });
 app.post( '/login', ( req, res ) => {
@@ -137,18 +138,38 @@ app.post( '/login', ( req, res ) => {
   // res.send(req.body.eid+""+req.body.password+"");
 });
 
+// ################################ 로그아웃 #################################
+app.get('/logout', (req, res) => {
+  console.log(req.session.uid);
+  console.log('logout 페이지 접속');
+  const sessionId = req.session.uid;
+  if (!sessionId) {
+    res.status(400).send('로그인이 필요한 서비스 입니다.')
+  } else {
+    req.session.destroy();
+    res.redirect('login');
+  }
+
+})
+
 // ################################ 회원 정보 수정 #################################
-app.get( '/update', ( req, res ) => {
-  res.render('update');
+app.get( '/myinfo', ( req, res ) => {
+  console.log(req.session.uid);
+  console.log('myinfo 페이지 접속')
+  const sessionId = req.session.uid;
+  if (!sessionId) {
+    res.status(401).send('로그인이 필요한 서비스 입니다.');
+  } else {
+    res.render('update');
+  }
 });
 
-app.post('/update', (req, res) => {
-  const sql = "select * from T_User"
+app.post('/myinfo', (req, res) => {
   res.render('update');
 });
 
 // ################################ 회원탈퇴 #################################
-app.get( '/delete', ( req, res ) => {
+app.get( '/quit', ( req, res ) => {
   res.render("delete");
 });
 
