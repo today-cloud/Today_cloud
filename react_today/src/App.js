@@ -3,6 +3,7 @@ import React from 'react';
 import Signup from './Signup';
 import Login from './Login';
 import Main from './main';
+import Infochange from './infochange';
 // import Bootstraptest from './Bootstraptest';
 
 function App(){
@@ -13,8 +14,9 @@ function App(){
             </nav>
             <main>
                 {/* <Signup></Signup> */}
-                <Login></Login>
+                {/* <Login></Login> */}
                 {/* <Main></Main> */}
+                <Infochange></Infochange>
                 {/* <Bootstraptest></Bootstraptest> */}
             </main>
         </div>

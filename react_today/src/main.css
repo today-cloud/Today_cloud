@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+/* header */
+
+.nav {
+    margin-bottom: 35px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-menu {
+    display: flex;
+}
+
+.header-menu li {
+    margin-right: 3rem;
+}
+
+.header-menu li:last-child {
+    margin-right: 0;
+}
+
+.header-menu li a {
+    background-color: #D9E6ED;
+    opacity: 0.7;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    font-size: 19px;
+    color: #080707;
+}
+
+/*  */
+
+/* weekly sidebar */
+
+.main-sidebar {
+    background-color: red;
+}
+
+.weekly_tags {
+    margin-top: 78px;
+    color: #1C2123;
+    font-weight: bold;
+}
+
+.weekly_tags div {
+    width: 151px;
+    height: 56px;
+    background: #E7F1F5;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.weekly_tags ul li {
+    border-radius: 17px;
+    width: 107px;
+    height: 45px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 19.86px;
+}
+
+.weekly_tags ul li:hover {
+    background: rgba(255, 255, 255, 0.712);
+    box-shadow: 7px 5px 2px rgba(0, 0, 0, 0.25);
+    transition: .5s ease-in-out;
+
+}
+
+/*  */
+
+/* main content */
+
+.main-contents {
+    background-color: blue;
+}
+
+.whats-today {
+    background-color: #AACBDB;
+    height: 79px;
+    opacity: 0.5;
+    border-radius: 27px;
+    display: flex;
+    align-items: center;
+}
+
+.cloud-svg {
+    background-color: #EEEEEE;
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    display: flex;
+}
+
+.cloud-svg svg {
+    margin: auto;
+}
+
+.today-news {
+    background-color: #E3E3E3;
+    opacity: 0.5;
+    box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 27px;
+    padding: 50px 50px;
+    display: grid;
+    grid-template-columns: 2fr 7fr;
+}
+
+.today-profile {
+    width: 90px;
+    height: 90px;
+    box-shadow: inset 4px 5px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+}
+
+.news-cloud {
+    background-color: #EEEEEE;
+    border-radius: 27px;
+    box-shadow: inset 2px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
+.today-tags ul li {
+    padding: 10px;
+    background-color: #C5D3DB;
+    border-radius: 27px;
+}
+
+/*  */
