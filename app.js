@@ -39,14 +39,14 @@ app.use( '/', express.static(path.join(__dirname, 'views') ) )
 // ##################react 불러오는 곳#########################
 app.use( '/react', express.static(path.join(__dirname, 'react_today/build') ) );
 
-// ##################react 불러오는 곳#########################
-// app.get( '/react', ( req, res ) => {
+//##################react 불러오는 곳#########################
+//app.get( '/react', ( req, res ) => {
+//res.sendFile( path.join(__dirname, './react_today/build/index.html') )
 // res.sendFile( path.join(__dirname, 'views/main.html') )
-// res.sendFile( path.join(__dirname, 'views/main.html') )
-// });
+//});
 
 // 회원가입 테스트 했습니다.-윤영우-
-app.get( '/', ( req, res ) => {
+app.get( '/react', ( req, res ) => {
   console.log(conn);
   //res.render('mainTest');
   // ##################react 불러오는 곳#########################
@@ -160,7 +160,15 @@ app.get( '/myinfo', ( req, res ) => {
   if (!sessionId) {
     res.status(401).send('로그인이 필요한 서비스 입니다.');
   } else {
-    res.render('update');
+    var sid = req.session.uid;
+    var sql = "select * from T_User where user_Num = '"+sid+"';";
+    conn.query(sql,function(err,result){
+      if (result.length == 0){
+        res.render('login');
+      }else{
+        res.render('update');
+      }
+    })
   }
 });
 
