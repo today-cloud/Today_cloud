@@ -1,5 +1,12 @@
 @charset "utf-8";
 
+@font-face {
+    font-family: 'Binggrae';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* header */
 
 .nav {
@@ -35,9 +42,9 @@
 
 /* weekly sidebar */
 
-.main-sidebar {
+/* .main-sidebar {
     background-color: red;
-}
+} */
 
 .weekly_tags {
     margin-top: 78px;
@@ -80,9 +87,9 @@
 
 /* main content */
 
-.main-contents {
+/* .main-contents {
     background-color: blue;
-}
+} */
 
 .whats-today {
     background-color: #AACBDB;
@@ -91,18 +98,30 @@
     border-radius: 27px;
     display: flex;
     align-items: center;
+    padding: 18px;
 }
 
 .cloud-svg {
     background-color: #EEEEEE;
-    width: 53px;
-    height: 53px;
+    padding: 6px;
     border-radius: 50%;
     display: flex;
+    margin-right: 19px;
 }
 
 .cloud-svg svg {
     margin: auto;
+}
+
+.today-whats {
+    background-color: #EEEEEE;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border-radius: 16px;
+    justify-content: space-between;
+    padding: 0 10px;
+    line-height: 42px;
 }
 
 .today-news {
@@ -112,7 +131,8 @@
     border-radius: 27px;
     padding: 50px 50px;
     display: grid;
-    grid-template-columns: 2fr 7fr;
+    grid-template-columns: 1.3fr 7fr;
+    margin-top: 68px;
 }
 
 .today-profile {
@@ -126,6 +146,11 @@
     background-color: #EEEEEE;
     border-radius: 27px;
     box-shadow: inset 2px 3px 5px rgba(0, 0, 0, 0.25);
+    padding: 19px 29px;
+}
+
+.news-cloud div {
+    font-family: 'Binggrae';
 }
 
 .today-tags ul li {

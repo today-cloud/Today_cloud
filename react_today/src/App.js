@@ -15,8 +15,8 @@ function App(){
             <main>
                 {/* <Signup></Signup> */}
                 {/* <Login></Login> */}
-                {/* <Main></Main> */}
-                <Infochange></Infochange>
+                <Main></Main>
+                {/* <Infochange></Infochange> */}
                 {/* <Bootstraptest></Bootstraptest> */}
             </main>
         </div>

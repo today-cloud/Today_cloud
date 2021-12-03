@@ -98,7 +98,6 @@ function Main() {
                                 </div>
                             </div>
                         </Row>
-                        <Row>     
                             <div className="today-news">
                                 <div className="today-profile">
                                     <div className="user-profile"></div>
@@ -114,7 +113,22 @@ function Main() {
                                     </ul>
                                 </div>
                             </div>
-                        </Row>
+
+                            <div className="today-news">
+                                <div className="today-profile">
+                                    <div className="user-profile"></div>
+                                </div>
+                                <div className="news-cloud">
+                                    <div>가나다라마바사아자차</div>
+                                </div>
+                                <div className="today-tags">
+                                    <ul>
+                                        <li>#문래동</li>
+                                        <li>#비빔국수</li>
+                                        <li>#맛집</li>
+                                    </ul>
+                                </div>
+                            </div>
                     </Col>
                 </Row>
             </Container>
