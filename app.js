@@ -87,9 +87,11 @@ app.post('/signup',(req,res)=>{
   });
 });
 
+// login -윤영우 12/05-
 app.get('/login',(req,res)=>{
   res.render('login');
 });
+const querystring = require('querystring');
 app.post('/login',(req,res)=>{
   const eid = req.body.user_Eid;
   const password = req.body.user_Pw;
@@ -106,3 +108,13 @@ app.post('/login',(req,res)=>{
     }
   });
 });
+
+// logout
+app.get('/logout',(req,res)=>{
+  if(!req.session.uid){
+    res.send('로그인이 필요한 서비스 입니다.');
+  }else{
+    req.session.destroy();
+    res.redirect('login');
+  }
+})
