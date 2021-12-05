@@ -1,5 +1,13 @@
 <h2>여기는 메인 페이지 입니다.</h2>
-<%=user.user_Num%>
+<h2><%=user.user_Num%></h2>
+<h2><%=user.user_Eid%></h2>
+<h2><%=user.user_Pw%></h2>
 
-<a href="/myinfo">정보 바꾸러 가기</a>
+
+<form action="update" method="post">
+    <input type="text" name = "user_Eid" required>
+    <input type="password" name = "user_Pw" required>
+    <input type="submit" value="아이디 비번 번경">
+</form>
 <a href="/logout">로그아웃하기</a>
+<a href="/delete">탈퇴하기</a>
