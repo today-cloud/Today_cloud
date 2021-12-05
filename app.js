@@ -86,3 +86,23 @@ app.post('/signup',(req,res)=>{
     }
   });
 });
+
+app.get('/login',(req,res)=>{
+  res.render('login');
+});
+app.post('/login',(req,res)=>{
+  const eid = req.body.user_Eid;
+  const password = req.body.user_Pw;
+
+  const sql = "select * from T_User where user_Eid = '" + eid +"' and user_Pw ='" +password+"';";
+  conn.query(sql, function(err,result){
+    if(result.length == 0) {
+      res.render('/login');
+    }else{
+      req.session.uid = result[0].user_Num;
+      req.session.save(function(err){
+        res.render('main',{user:result[0]});
+      });
+    }
+  });
+});
