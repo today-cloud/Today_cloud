@@ -67,7 +67,7 @@ var storage = multer.diskStorage({
   },
   filename: function(req,file,cb){
     console.log(file);
-    cb(null,Date.now()+"-"+file.orginalname);
+    cb(null,Date.now()+"-"+file.originalname);
   }
 });
 
@@ -195,14 +195,14 @@ app.get('/delete',(req,res)=>{
 
 // board write
 app.get('/board',(req,res)=>{
-  if(req.session.uid){
-    res.render('boardwrite');
-  }else{
-    res.redirect('../login');
-  }
+  res.render('boardwrite');
+  // if(req.session.uid){
+  //   res.render('boardwrite');
+  // }else{
+  //   res.redirect('../login');
+  // }
 });
 
 app.post('/board',upload.single('fileupload'),function(req,res){
   res.send('success'+req.file);
-  console.log(req.file);
 });
