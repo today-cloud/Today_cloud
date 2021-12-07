@@ -21,18 +21,20 @@ app.use(session({
   saveUninitialized : true,
 }));
 
-// const port = 8000;
-// const fs = require('fs');
+const port = 8000;
+const fs = require('fs');
 const http = require("http");
-// const https = require("https");
+const https = require("https");
 
 // view의 확장인 ejs 를 사용하도록 도와주는 장치
 app.set( 'view engine', 'ejs');
 app.set( 'views', __dirname + '/views');
 
-app.use(body.urlencoded({extends:false}));
+app.use(body.urlencoded({ extended: true }));
 app.use(body.json());
 
+
+// ############################################################################### SSL 수정 부분 ##############
 // const options = { // letsencrypt로 받은 인증서 경로를 입력
 //   ca: fs.readFileSync('/etc/letsencrypt/live/todaycloud.shop/fullchain.pem'),
 //   key: fs.readFileSync('/etc/letsencrypt/live/todaycloud.shop/privkey.pem'),
@@ -47,7 +49,7 @@ http.createServer(app).listen(8000);
 // });
 
 app.use( '/', express.static(path.join(__dirname, 'views') ) )
-// app.use( express.static(path.join(__dirname, 'static') ) )
+app.use( express.static(path.join(__dirname, 'static') ) )
 // ##################react 불러오는 곳#########################
 // app.use( '/react', express.static(path.join(__dirname, 'react_today/build') ) );
 

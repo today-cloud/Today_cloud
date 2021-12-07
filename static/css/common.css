@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: #e6f4ff;
+    padding: 0 6%;
+}
+
+@media (max-width: 600px) {
+    body {
+        height: 100vh;
+        background: #e6f4ff;
+        padding: 0 1.5%;
+    }
+}
