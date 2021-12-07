@@ -1,0 +1,8 @@
+@charset "uft-8";
+
+.user-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: olivedrab;
+}
