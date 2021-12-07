@@ -5,9 +5,13 @@ const app = express();
 const mysql = require( 'mysql' );
 const session = require('express-session');
 const body = require( 'body-parser' );
-
+const multer = require('multer');
 // const userRoute = require('./routes/user')(app);
 // app.use('/', userRoute);
+const port = 8000;
+const fs = require('fs');
+const http = require("http");
+const https = require("https");
 
 var conn = mysql.createConnection({
   user: 'root',
@@ -21,18 +25,17 @@ app.use(session({
   saveUninitialized : true,
 }));
 
-const port = 8000;
-const fs = require('fs');
-const http = require("http");
-const https = require("https");
+app.use(body.urlencoded({ extended: true }));
+app.use(body.json());
+
+app.use( '/', express.static(path.join(__dirname, 'views') ) )
+app.use( express.static(path.join(__dirname, 'static') ) )
 
 // view의 확장인 ejs 를 사용하도록 도와주는 장치
 app.set( 'view engine', 'ejs');
 app.set( 'views', __dirname + '/views');
 
-app.use(body.urlencoded({ extended: true }));
-app.use(body.json());
-
+http.createServer(app).listen(8000);
 
 // ############################################################################### SSL 수정 부분 ##############
 // const options = { // letsencrypt로 받은 인증서 경로를 입력
@@ -40,7 +43,6 @@ app.use(body.json());
 //   key: fs.readFileSync('/etc/letsencrypt/live/todaycloud.shop/privkey.pem'),
 //   cert: fs.readFileSync('/etc/letsencrypt/live/todaycloud.shop/cert.pem')
 // };
-http.createServer(app).listen(8000);
 // https.createServer(options, app).listen(443);
 // https.createServer(options, (req, res) => {
 //   console.log('필요한 코드 넣기');
@@ -48,8 +50,6 @@ http.createServer(app).listen(8000);
 //   console.log('서버 포트: 80 ...');
 // });
 
-app.use( '/', express.static(path.join(__dirname, 'views') ) )
-app.use( express.static(path.join(__dirname, 'static') ) )
 // ##################react 불러오는 곳#########################
 // app.use( '/react', express.static(path.join(__dirname, 'react_today/build') ) );
 
@@ -58,6 +58,20 @@ app.use( express.static(path.join(__dirname, 'static') ) )
 // res.sendFile( path.join(__dirname, 'views/main.html') )
 // res.sendFile( path.join(__dirname, 'views/main.html') )
 // });
+
+var storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    if(file.mimetype == "image/jpeg" || file.mimetype == "image/jpg" || file.mimetype == "image/png"){
+      cb(null, 'image/board');
+    }
+  },
+  filename: function(req,file,cb){
+    console.log(file);
+    cb(null,Date.now()+"-"+file.orginalname);
+  }
+});
+
+var upload = multer({storage : storage});
 
 app.get( '/', ( req, res ) => {
   // console.log(conn);
@@ -177,4 +191,18 @@ app.get('/delete',(req,res)=>{
       res.redirect('../login');
     }
   });
+});
+
+// board write
+app.get('/board',(req,res)=>{
+  if(req.session.uid){
+    res.render('boardwrite');
+  }else{
+    res.redirect('../login');
+  }
+});
+
+app.post('/board',upload.single('fileupload'),function(req,res){
+  res.send('success'+req.file);
+  console.log(req.file);
 });
