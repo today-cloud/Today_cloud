@@ -61,7 +61,7 @@ app.use( express.static(path.join(__dirname, 'static') ) )
 
 app.get( '/', ( req, res ) => {
   // console.log(conn);
-  res.render('mainTest');
+  res.render('userinfo');
   // ##################react 불러오는 곳#########################
   // res.sendFile( path.join(__dirname, 'react_today/build/index.html') )
 });
