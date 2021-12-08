@@ -3,10 +3,23 @@
 /* ###################################### */
 
 .concon {
-    margin-top: 3%;
+    margin-top: 2%;
+}
+
+.main_logo_info {
+    text-align: center;
+    /* padding: 4% 3%; */
+}
+
+.logo_size {
+    width: 320px;
+    height: 170px;
+    object-fit: fill;
+    margin-bottom: 5%;
 }
 
 .signup_input_all {
+    text-align: center;
     background: #E3E3E3;
     opacity: 0.5;
     box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.25);
@@ -17,12 +30,21 @@
 }
 
 .signup_input_all input {
+    text-align: center;
     font-size: 15px;
     margin-bottom: 10px;
-    height: 50px;
+    height: 45px;
     background: #EEEEEE;
     border-radius: 27px;
     box-shadow: inset 2px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
+.cc_label {
+    margin-bottom: 2%;
+}
+
+.trans_size {
+    width: 400px;
 }
 
 .signup_insert_input {
@@ -33,7 +55,7 @@
     text-align: center;
     display: flex;
     justify-content: center;
-    margin-top: 10px auto;
+    margin: 4% 3% 1% 3%;
 }
 
 .signup_all_button button {
@@ -46,21 +68,14 @@
     padding: 7.4px 15px;
 }
 
-.signup_all_button button:nth-child(1) {
+/* .signup_all_button button:nth-child(1) {
     margin-bottom: 10px;
-}
+} */
 
 .signup_all_button button:hover {
     background: #288bc1;
     color: rgb(244, 242, 242);
     transition: 0.3s ease-in-out;
-}
-
-.signup_cloud_img svg {
-    width: 40%;
-    height: auto;
-    display: block;
-    margin: 0 auto 23px;
 }
 
 /* iPad 가로+세로 */
@@ -80,13 +95,13 @@
         box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.25);
         border-radius: 27px;
         padding: 4% 3%;
-        width: 70%;
+        width: 55%;
     }
-    .signup_cloud_img svg {
-        width: 50%;
-        height: auto;
-        display: block;
-        margin: 0 auto 23px;
+    .signup_input_all input {
+        height: 42px;
+    }
+    .trans_size {
+        width: 330px;
     }
 }
 
@@ -109,10 +124,18 @@
         padding: 4% 3%;
         width: 80%;
     }
-    .signup_cloud_img svg {
-        width: 50%;
-        height: auto;
-        display: block;
-        margin: 0 auto 23px;
+    .signup_input_all input {
+        height: 42px;
+    }
+    .trans_size {
+        width: 250px;
+    }
+    .signup_all_button button {
+        font-size: 19px;
+        /* padding: 7.4px 30px; */
+        min-width: 200px;
+    }
+    .signup_all_button .btn_ss{
+        margin-bottom: 2%;
     }
 }

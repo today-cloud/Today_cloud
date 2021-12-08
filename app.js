@@ -60,22 +60,9 @@ http.createServer(app).listen(port);
 // res.sendFile( path.join(__dirname, 'views/main.html') )
 // });
 
-var storage = multer.diskStorage({
-  destination: function(req, file, cb){
-    if(file.mimetype == "image/jpeg" || file.mimetype == "image/jpg" || file.mimetype == "image/png"){
-      cb(null, 'image/board');
-    }
-  },
-  filename: function(req,file,cb){
-    console.log(file);
-    cb(null,Date.now()+"-"+file.originalname);
-  }
-});
-
-var upload = multer({storage : storage});
-
-app.get( '/', ( req, res ) => {
-  res.render('userinfo');
+app.get('/indexAll',(req,res)=>{
+  console.log('req 완료 확인페이지');
+  res.render('indexAll');
 });
 
 // ######################################################
@@ -211,6 +198,28 @@ app.get('/main',(req,res)=>{
       });
     }
   });
+});
+
+// ######################################################
+// ##############  파일업로더  ##################
+// ##############  게시판  ##################
+// ######################################################
+var storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    if(file.mimetype == "image/jpeg" || file.mimetype == "image/jpg" || file.mimetype == "image/png"){
+      cb(null, 'image/board');
+    }
+  },
+  filename: function(req,file,cb){
+    console.log(file);
+    cb(null,Date.now()+"-"+file.originalname);
+  }
+});
+
+var upload = multer({storage : storage});
+
+app.get( '/', ( req, res ) => {
+  res.render('userinfo');
 });
 
 // board write
