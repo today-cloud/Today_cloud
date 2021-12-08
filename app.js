@@ -35,7 +35,7 @@ app.use( express.static(path.join(__dirname, 'static') ) )
 app.set( 'view engine', 'ejs');
 app.set( 'views', __dirname + '/views');
 
-http.createServer(app).listen(8000);
+
 
 // ############################################################################### SSL 수정 부분 ##############
 // const options = { // letsencrypt로 받은 인증서 경로를 입력
@@ -43,7 +43,8 @@ http.createServer(app).listen(8000);
 //   key: fs.readFileSync('/etc/letsencrypt/live/todaycloud.shop/privkey.pem'),
 //   cert: fs.readFileSync('/etc/letsencrypt/live/todaycloud.shop/cert.pem')
 // };
-// https.createServer(options, app).listen(443);
+http.createServer(app).listen(port);
+//https.createServer(options, app).listen(443);
 // https.createServer(options, (req, res) => {
 //   console.log('필요한 코드 넣기');
 // }).listen(8000, function() {
@@ -74,13 +75,12 @@ var storage = multer.diskStorage({
 var upload = multer({storage : storage});
 
 app.get( '/', ( req, res ) => {
-  // console.log(conn);
   res.render('userinfo');
-  // ##################react 불러오는 곳#########################
-  // res.sendFile( path.join(__dirname, 'react_today/build/index.html') )
 });
 
-// 회원가입 테스트 했습니다.-윤영우 12/05-
+// ######################################################
+// ##############  회원가입  ##################
+// ######################################################
 app.get('/signup',(req,res)=>{
   console.log('회워가입 요청');
   res.render('signup');
@@ -103,8 +103,11 @@ app.post('/signup',(req,res)=>{
   });
 });
 
-// login -윤영우 12/05-
+// ######################################################
+// ##############  로그인  ##################
+// ######################################################
 app.get('/login',(req,res)=>{
+  console.log('login 들어왔다');
   res.render('login');
 });
 app.post('/login',(req,res)=>{
@@ -118,13 +121,16 @@ app.post('/login',(req,res)=>{
     }else{
       req.session.uid = result[0].user_Num;
       req.session.save(function(err){
+        console.log('login success');
         res.render('main',{user:result[0]});
       });
     }
   });
 });
 
-// logout
+// ######################################################
+// ##############  로그아웃  ##################
+// ######################################################
 app.get('/logout',(req,res)=>{
   if(!req.session.uid){
     res.send('로그인이 필요한 서비스 입니다.');
@@ -132,9 +138,18 @@ app.get('/logout',(req,res)=>{
     req.session.destroy();
     res.redirect('login');
   }
-})
+});
 
-// update id,pw 변경 -윤영우 12/05-
+// ######################################################
+// ##############  회원정보 찾기  ##################
+// ######################################################
+app.get('/search',(req,res)=>{
+  res.render('search');
+});
+
+// ######################################################
+// ##############  회원정보 수정  ##################
+// ######################################################
 app.post('/update',(req,res)=>{
   var eid = req.body.user_Eid;
   var pw = req.body.user_Pw;
@@ -166,7 +181,24 @@ app.post('/update',(req,res)=>{
   });
 });
 
-//main
+
+// ######################################################
+// ##############  회원탈퇴  ##################
+// ######################################################
+app.get('/delete',(req,res)=>{
+  var sql = "delete from T_User where user_Num = "+req.session.uid;
+  conn.query(sql,function(err){
+    if(err){
+      console.log(err);
+    }else{
+      res.redirect('../login');
+    }
+  });
+});
+
+// ######################################################
+// ##############  main  ##################
+// ######################################################
 app.get('/main',(req,res)=>{
   var sql = "select * from T_User where user_Num = '" + req.session.uid +"'";
   conn.query(sql,function(err,result){
@@ -177,18 +209,6 @@ app.get('/main',(req,res)=>{
       req.session.save(function(err){
         res.render('main',{user:result[0]});
       });
-    }
-  });
-});
-
-// 탈퇴 -윤영우 12/05-
-app.get('/delete',(req,res)=>{
-  var sql = "delete from T_User where user_Num = "+req.session.uid;
-  conn.query(sql,function(err){
-    if(err){
-      console.log(err);
-    }else{
-      res.redirect('../login');
     }
   });
 });

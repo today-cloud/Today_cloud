@@ -2,3 +2,4 @@ node_modules
 # /react_today
 .idea
 .DS_Store
+/.git
