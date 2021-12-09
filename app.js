@@ -12,6 +12,7 @@ const port = 8000;
 const fs = require('fs');
 const http = require("http");
 const https = require("https");
+const querystring = require('querystring');
 
 var conn = mysql.createConnection({
   user: 'root',
@@ -35,7 +36,17 @@ app.use( express.static(path.join(__dirname, 'static') ) )
 app.set( 'view engine', 'ejs');
 app.set( 'views', __dirname + '/views');
 
-
+function user_sql(req){
+  const sql = "select * from T_User where user_Num = '" + req.session.uid +"';";
+  conn.query(sql, function(err,result){
+    if(result.length == 0) {
+      res.render('login');
+    }else{
+      var user = result[0];
+      return user;
+    }
+  });
+}
 
 // ############################################################################### SSL 수정 부분 ##############
 // const options = { // letsencrypt로 받은 인증서 경로를 입력
@@ -228,14 +239,29 @@ app.get( '/', ( req, res ) => {
 
 // board write
 app.get('/board',(req,res)=>{
-  res.render('boardwrite');
-  // if(req.session.uid){
-  //   res.render('boardwrite');
-  // }else{
-  //   res.redirect('../login');
-  // }
+  if(req.session.uid){
+    res.render('boardwrite');
+  }else{
+    res.redirect('../login');
+  }
 });
 
 app.post('/board',upload.single('fileupload'),function(req,res){
-  res.send('success'+req.file);
+  var title = req.body.title;
+  var content = req.body.content;
+  var filepath = req.file.path;
+  const sql = "insert into T_Board (board_Title,board_Content,user_Num,board_Image) values ('"+title+"','"+content+"','"+req.session.uid+"','"+filepath+"');";
+
+  conn.query(sql,function(err,results) {
+    if(err){
+      console.log(err);
+      res.redirect('../board');
+    }else{
+      var user = user_sql(req);
+      const query = querystring.stringify({
+        user:user
+      });
+      res.redirect('../main',query);
+    }
+  });
 });
