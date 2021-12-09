@@ -187,18 +187,22 @@ app.get('/delete',(req,res)=>{
 // ##############  main  ##################
 // ######################################################
 app.get('/main',(req,res)=>{
-  var sql = "select * from T_User where user_Num = '" + req.session.uid +"'";
-  conn.query(sql,function(err,result){
-    if(result.length == 0) {
-      res.render('login');
-    }else{
-      req.session.uid = result[0].user_Num;
-      req.session.save(function(err){
-        res.render('main',{user:result[0]});
-      });
-    }
-  });
+  res.render('main');
 });
+
+// app.get('/main',(req,res)=>{
+//   var sql = "select * from T_User where user_Num = '" + req.session.uid +"'";
+//   conn.query(sql,function(err,result){
+//     if(result.length == 0) {
+//       res.render('login');
+//     }else{
+//       req.session.uid = result[0].user_Num;
+//       req.session.save(function(err){
+//         res.render('main',{user:result[0]});
+//       });
+//     }
+//   });
+// });
 
 // ######################################################
 // ##############  파일업로더  ##################
