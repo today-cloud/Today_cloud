@@ -50,7 +50,27 @@ function user_sql(req,callback){
     }
   });
 }
-
+function board_sql(callback){
+  const sql = "select * from T_Board order by board_Date desc;";
+  conn.query(sql,function(err,results){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(results);
+      callback(results);
+    }
+  });
+}
+function tag_sql(callback){
+  const sql = "select tag_Tagname,count(tag_Tagname)as coun from T_Tag group by tag_Tagname order by coun desc limit 5;";
+  conn.query(sql,function(err,results){
+    if(err){
+      console.log(err);
+    }else{
+      callback(results);
+    }
+  })
+}
 // ############################################################################### SSL 수정 부분 ##############
 // const options = { // letsencrypt로 받은 인증서 경로를 입력
 //   ca: fs.readFileSync('/etc/letsencrypt/live/todaycloud.shop/fullchain.pem'),
@@ -78,11 +98,12 @@ app.get('/indexAll',(req,res)=>{
   console.log('req 완료 확인페이지');
   console.log('--------');
   user_sql(req,function(user){
-    console.log('---last---');
-    console.log(user);
-    res.render('indexAll',{user:user});
+    board_sql(function(board){
+      tag_sql(function(tag){
+        res.render('main',{uesr:user,board:board,tag:tag});
+      });
+    });
   });
-
 });
 
 app.get('/post',(req,res)=>{
@@ -134,7 +155,7 @@ app.post('/login',(req,res)=>{
       req.session.uid = result[0].user_Num;
       req.session.save(function(err){
         console.log('login success');
-        res.render('main',{user:result[0]});
+        res.redirect('../indexAll');
       });
     }
   });

@@ -65,12 +65,13 @@
                     <div>Weekly Tags</div>
                     <ul>
                         <li>#전체</li>
-                        <li>#안목해변</li>
-                        <li>#제주도</li>
-                        <li>#익선동</li>
-                        <li>#인천공항</li>
-                        <li>#강남사거리</li>
-                        <li>#오사카</li>
+                        <%
+                            for(var i = 0; i<tag.length;i++){
+                        %>
+                            <li><%=tag[i].tag_Tagname%></li>
+                        <%
+                            }
+                        %>
                     </ul>
                 </div>
             </div>
@@ -122,51 +123,27 @@
                 </div>
                 <!-- 오늘의 구름 게시글 -->
                 <div class="row">
-                    <div class="today-news">
-                        <div class="today-profile">
-                            <div class="user-profile"></div>
+                    <%
+                        for(var i = 0; i < board.length; i++){
+                    %>
+                        <div class="today-news">
+                            <div class="today-profile">
+                                <div class="user-profile"></div>
+                            </div>
+                            <div class="news-cloud">
+                                <div><%=board[i].board_Content%></div>
+                            </div>
+                            <div class="today-tags">
+                                <ul>
+                                    <li>#문래동</li>
+                                    <li>#비빔국수</li>
+                                    <li>#맛집</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="news-cloud">
-                            <div>가나다라마바사아자차</div>
-                        </div>
-                        <div class="today-tags">
-                            <ul>
-                                <li>#문래동</li>
-                                <li>#비빔국수</li>
-                                <li>#맛집</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="today-news">
-                        <div class="today-profile">
-                            <div class="user-profile"></div>
-                        </div>
-                        <div class="news-cloud">
-                            <div>가나다라마바사아자차</div>
-                        </div>
-                        <div class="today-tags">
-                            <ul>
-                                <li>#문래동</li>
-                                <li>#비빔국수</li>
-                                <li>#맛집</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="today-news">
-                        <div class="today-profile">
-                            <div class="user-profile"></div>
-                        </div>
-                        <div class="news-cloud">
-                            <div>가나다라마바사아자차</div>
-                        </div>
-                        <div class="today-tags">
-                            <ul>
-                                <li>#문래동</li>
-                                <li>#비빔국수</li>
-                                <li>#맛집</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </div>
