@@ -1,4 +1,5 @@
 const exampleModal = document.getElementById('exampleModal')
+// const exampleModal = bootstrap.Modal(document.getElementById('exampleModal'), options)
 exampleModal.addEventListener('show.mdb.modal', (event) => {
   // Button that triggered the modal
   const button = event.relatedTarget
