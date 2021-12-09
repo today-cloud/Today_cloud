@@ -13,6 +13,7 @@ const fs = require('fs');
 const http = require("http");
 const https = require("https");
 const querystring = require('querystring');
+const url = require('url');
 
 var conn = mysql.createConnection({
   user: 'root',
@@ -36,14 +37,16 @@ app.use( express.static(path.join(__dirname, 'static') ) )
 app.set( 'view engine', 'ejs');
 app.set( 'views', __dirname + '/views');
 
-function user_sql(req){
+function user_sql(req,callback){
   const sql = "select * from T_User where user_Num = '" + req.session.uid +"';";
   conn.query(sql, function(err,result){
     if(result.length == 0) {
-      res.render('login');
+      res.redirect('../login');
     }else{
       var user = result[0];
-      return user;
+      console.log("user 정보 ")
+      console.log(user);
+      callback(user);
     }
   });
 }
@@ -73,7 +76,13 @@ http.createServer(app).listen(port);
 
 app.get('/indexAll',(req,res)=>{
   console.log('req 완료 확인페이지');
-  res.render('indexAll');
+  console.log('--------');
+  user_sql(req,function(user){
+    console.log('---last---');
+    console.log(user);
+    res.render('indexAll',{user:user});
+  });
+
 });
 
 app.get('/post',(req,res)=>{
@@ -85,7 +94,7 @@ app.get('/post',(req,res)=>{
 // ##############  회원가입  ##################
 // ######################################################
 app.get('/signup',(req,res)=>{
-  console.log('회워가입 요청');
+  console.log('회원가입 요청');
   res.render('signup');
 });
 app.post('/signup',(req,res)=>{
@@ -206,6 +215,10 @@ app.get('/main',(req,res)=>{
   res.render('main');
 });
 
+app.get('/t_c_info',(req,res)=>{
+  res.render('t_c_info');
+})
+
 // app.get('/main',(req,res)=>{
 //   var sql = "select * from T_User where user_Num = '" + req.session.uid +"'";
 //   conn.query(sql,function(err,result){
@@ -257,16 +270,12 @@ app.post('/board',upload.single('fileupload'),function(req,res){
   var filepath = req.file.path;
   const sql = "insert into T_Board (board_Title,board_Content,user_Num,board_Image) values ('"+title+"','"+content+"','"+req.session.uid+"','"+filepath+"');";
 
-  conn.query(sql,function(err,results) {
+  conn.query(sql,function(err,result) {
     if(err){
       console.log(err);
       res.redirect('../board');
     }else{
-      var user = user_sql(req);
-      const query = querystring.stringify({
-        user:user
-      });
-      res.redirect('../main',query);
+      res.redirect('../indexAll');
     }
   });
 });
