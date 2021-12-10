@@ -261,7 +261,7 @@ app.get('/t_c_info',(req,res)=>{
 var storage = multer.diskStorage({
   destination: function(req, file, cb){
     if(file.mimetype == "image/jpeg" || file.mimetype == "image/jpg" || file.mimetype == "image/png"){
-      cb(null, 'image/board');
+      cb(null, 'public/board');
     }
   },
   filename: function(req,file,cb){
