@@ -4,11 +4,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
 }
 
 body {
     height: 100vh;
-    background: #f5fafd;
+    background: linear-gradient(180deg, #D9E5EE 0%, #EBEDF2 46.88%, #EBEFF2 100%);
     padding: 0 6%;
 }
 
