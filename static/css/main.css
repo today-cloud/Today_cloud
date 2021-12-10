@@ -9,13 +9,13 @@
 
 /* header */
 
-.container-fluid {
-    padding: 0;
-    margin-top: 25px;
+body html {
+    overflow: hidden;
 }
 
 .todaycloud-logo img {
-    width: 100px;
+    padding-left: 10%;
+    width: 200px;
     height: auto;
 }
 
@@ -38,8 +38,12 @@
     transition: .5s ease-in;
 }
 
-.navbar-nav li:last-child {
+/* .navbar-nav li:last-child {
     margin-right: 0;
+} */
+
+.t-align {
+    text-align: right;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -49,14 +53,13 @@
 /* weekly sidebar */
 
 .weekly_tags {
-    margin-top: 78px;
+    margin-top: 24%;
     color: #1C2123;
     font-weight: bold;
 }
 
 .weekly_tags div {
-    width: 151px;
-    height: 56px;
+    height: 40px;
     background: #E7F1F5;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25);
     border-radius: 17px;
@@ -68,16 +71,18 @@
 }
 
 .weekly_tags ul li {
+    text-align: center;
     border-radius: 17px;
-    width: 107px;
-    height: 45px;
+    height: 20px;
     justify-content: center;
     display: flex;
     align-items: center;
-    margin-top: 19.86px;
+    margin-top: 3%;
 }
 
 .weekly_tags ul li:hover {
+    width: auto;
+    padding-right: 20px;
     background: rgba(255, 255, 255, 0.712);
     box-shadow: 7px 5px 2px rgba(0, 0, 0, 0.25);
     transition: .5s ease-in-out;
@@ -129,9 +134,8 @@
     border-radius: 27px;
     padding: 50px 50px;
     display: grid;
-    grid-template-columns: 2fr 7fr;
     grid-template-columns: 1.3fr 7fr;
-    margin-top: 68px;
+    margin-top: 5%;
 }
 
 .today-profile {
@@ -153,6 +157,7 @@
 }
 
 .today-tags ul li {
+    padding-left: -2rem !important;
     padding: 10px;
     background-color: #C5D3DB;
     border-radius: 27px;
@@ -160,4 +165,24 @@
 
 .ss.today-news{
     overflow-y: scroll;
+}
+
+.main-sidebar {
+    text-align: center;
+}
+
+.s-box {
+    table-layout: fixed;
+    overflow: auto;
+    /* display: block; */
+    border-collapse: collapse;
+    /* border: 1px solid #000; */
+    border-spacing: 0;
+}
+
+.qwe {
+    /* 테이블에 들어간 클래스 */
+    display: block;
+    height: 740px;
+    overflow: auto;
 }

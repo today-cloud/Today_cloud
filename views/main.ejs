@@ -9,76 +9,59 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+<!--    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>-->
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-
+<!--    <script src="/js/main.js"></script>-->
 </head>
 
 <body>
-    <Container>
-        <!-- header -->
+    <div class="container-fluid">
+        <!-- 하단 row (header)-->
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <div class="todaycloud-logo">
-                            <img class="logo_size" src="/img/logo.png">
-                        </div>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">오늘의 구름 소개</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">로그인</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">회원가입</a>
-                            </li>
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Dropdown link
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                  <li><a class="dropdown-item" href="#">Action</a></li>
-                                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                              </li> -->
-                        </ul>
+                <a class="navbar-brand" href="#">
+                    <div class="todaycloud-logo">
+                        <img class="logo_size" src="/img/logo.png">
                     </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav t-align">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/t_c_info">오늘의 구름 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">로그인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup">회원가입</a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </div>
 
-        <!-- sidebar -->
-
         <div class="row">
-            <div class="col-4 col-md-4 main-sidebar">
+
+            <!-- 하단 row (sidebar)-->
+            <div class="col-4 col-md-4 main-sidebar pe-5">
                 <div class="weekly_tags">
                     <div>Weekly Tags</div>
                     <ul>
-                        <li>#전체</li>
-                        <%
-                            for(var i = 0; i<tag.length;i++){
-                        %>
-                            <li><%=tag[i].tag_Tagname%></li>
-                        <%
-                            }
-                        %>
+                        <li class="pe-4">#전체</li>
+                        <li class="pe-4">#전체</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- 메인콘텐츠 -->
+            <!-- 하단 row (main)-->
             <div class="col-8 col-md-8 main-contents">
-                <!-- 오늘의 구름 작성 -->
+                <!-- 오늘의 구름 작성  -->
                 <div class="row">
                     <div class="whats-today">
                         <div class="cloud-svg">
@@ -122,16 +105,14 @@
                     </div>
                 </div>
                 <!-- 오늘의 구름 게시글 -->
-                <div class="row">
-                    <%
-                        for(var i = 0; i < board.length; i++){
-                    %>
+                <div class="row s-box">
+                    <div class="qwe">
                         <div class="today-news">
                             <div class="today-profile">
                                 <div class="user-profile"></div>
                             </div>
                             <div class="news-cloud">
-                                <div><%=board[i].board_Content%></div>
+                                <div>가나다라마바사아자차</div>
                             </div>
                             <div class="today-tags">
                                 <ul>
@@ -141,13 +122,67 @@
                                 </ul>
                             </div>
                         </div>
-                    <%
-                        }
-                    %>
+                        <div class="today-news">
+                            <div class="today-profile">
+                                <div class="user-profile"></div>
+                            </div>
+                            <div class="news-cloud">
+                                <div>가나다라마바사아자차</div>
+                            </div>
+                            <div class="today-tags">
+                                <ul>
+                                    <li>#문래동</li>
+                                    <li>#비빔국수</li>
+                                    <li>#맛집</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="today-news">
+                            <div class="today-profile">
+                                <div class="user-profile"></div>
+                            </div>
+                            <div class="news-cloud">
+                                <div>가나다라마바사아자차</div>
+                            </div>
+                            <div class="today-tags">
+                                <ul>
+                                    <li>#문래동</li>
+                                    <li>#비빔국수</li>
+                                    <li>#맛집</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="today-news">
+                            <div class="today-profile">
+                                <div class="user-profile"></div>
+                            </div>
+                            <div class="news-cloud">
+                                <div>가나다라마바사아자차</div>
+                            </div>
+                            <div class="today-tags">
+                                <ul>
+                                    <li>#문래동</li>
+                                    <li>#비빔국수</li>
+                                    <li>#맛집</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </Container>
+    </div>
+    <script>
+        function t_c_info_on() {
+            location.href = "/t_c_info";
+        }
+        function login_on() {
+            location.href = "/login";
+        }
+        function signup_on() {
+            location.href = "/signup";
+        }
+    </script>
 </body>
 
 </html>
