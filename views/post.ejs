@@ -1,210 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 작성</title>
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" />
-    <script src="/js/post.js"></script>
-    <!-- MDB -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>게시글 작성</title>
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+        <!-- MDB -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" />
+        <!-- MDB -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/post.css">
-</head>
+        <!-- bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!-- jquery cdn -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <!-- 외부 스크립트 -->
+        <link rel="stylesheet" href="/css/post.css">
+    </head>
 
-<body>
+    <body>
 
-    <!-- 오늘의 소개 확인 -->
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">
-오늘의 소개 넣는 곳
-</button>
+        <!-- 오늘의 소개 확인 -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">
+        오늘의 소개 넣는 곳
+        </button>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">오늘의 소개?</h5>
-            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="row today_info_all">
-                <div class="col-4">
-                    rkskekfkk
-                </div>
-                <div class="col-8">
-                    rkskekfkk
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-            Close
-            </button>
-            <!-- <button type="button" class="btn btn-primary">Understood</button> -->
-        </div>
-        </div>
-    </div>
-</div>
-    <!-- 게시물 작성 -->
-    <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal"
-        data-mdb-whatever="@getbootstrap">
-        게시글 작성
-    </button>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">궁금 구름 작성</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">오늘의 소개?</h5>
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">태그</label>
-                            <input type="text" class="form-control" id="recipient-name" />
-                            <input type="text" class="form-control" id="recipient-name" />
-                            <input type="text" class="form-control" id="recipient-name" />
+                    <div class="row today_info_all">
+                        <div class="col-4">
+                            rkskekfkk
                         </div>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">제목</label>
-                            <input type="text" class="form-control" id="recipient-name" />
+                        <div class="col-8">
+                            rkskekfkk
                         </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">내용</label>
-                            <textarea class="form-control" id="message-text"></textarea>
-                        </div>
-                        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" />
-                    </form>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                        닫기
+                    Close
                     </button>
-                    <button type="button" class="btn btn-primary">작성</button>
+                    <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+                </div>
                 </div>
             </div>
         </div>
-    </div>
+        <!-- 게시물 작성 -->
+        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal"
+            data-mdb-whatever="@getbootstrap">
+            게시글 작성
+        </button>
 
-    <!-- 게시물 확인 -->
-    <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal01"
-        data-mdb-whatever="@getbootstrap">
-        게시글 확인
-    </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">궁금 구름 작성</h5>
+                        <div class="cloud-svg">
+                            <svg width="39" height="39" viewBox="0 0 39 39" fill="none">
+                                <g clip-path="url(#clip0_84_351)">
+                                    <path opacity="0.8" fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M25.35 7.8H23.4C21.6707 7.80023 19.9903 8.37491 18.623 9.43377C17.2556 10.4926 16.2787 11.9757 15.8457 13.65H15.6C13.5314 13.65 11.5474 14.4718 10.0846 15.9346C8.62183 17.3974 7.80005 19.3813 7.80005 21.45C7.80005 23.5187 8.62183 25.5027 10.0846 26.9654C11.5474 28.4282 13.5314 29.25 15.6 29.25H31.2C33.118 29.2528 34.9697 28.5489 36.4014 27.2727C37.8331 25.9966 38.7445 24.2377 38.9614 22.332C39.1783 20.4264 38.6854 18.5077 37.5771 16.9425C36.4688 15.3772 34.8226 14.2752 32.9531 13.847C32.5559 12.128 31.588 10.5944 30.2072 9.4962C28.8264 8.39802 27.1143 7.80012 25.35 7.8Z"
+                                        fill="#50B8E7" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M19.5 5.85001H17.55C15.8206 5.85024 14.1403 6.42491 12.7729 7.48377C11.4056 8.54263 10.4287 10.0257 9.99571 11.7H9.75001C7.68132 11.7 5.69736 12.5218 4.23458 13.9846C2.7718 15.4474 1.95001 17.4313 1.95001 19.5C1.95001 21.5687 2.7718 23.5527 4.23458 25.0154C5.69736 26.4782 7.68132 27.3 9.75001 27.3H25.35C27.2679 27.3028 29.1196 26.5989 30.5514 25.3227C31.9831 24.0466 32.8945 22.2877 33.1113 20.3821C33.3282 18.4764 32.8354 16.5577 31.7271 14.9925C30.6187 13.4272 28.9726 12.3252 27.1031 11.897C26.7059 10.178 25.7379 8.64438 24.3572 7.5462C22.9764 6.44803 21.2642 5.85012 19.5 5.85001ZM11.507 13.65L11.8833 12.1875C12.2083 10.9317 12.9411 9.81937 13.9668 9.02524C14.9924 8.2311 16.2528 7.80013 17.55 7.80001H19.5C22.2398 7.80001 24.5973 9.70126 25.2018 12.3338L25.4748 13.5233L26.6643 13.7982C28.0626 14.1234 29.2925 14.9511 30.1202 16.1241C30.9479 17.297 31.3155 18.7332 31.1533 20.1596C30.991 21.586 30.3101 22.9029 29.2401 23.8599C28.17 24.8169 26.7856 25.3473 25.35 25.35H9.75001C8.1985 25.35 6.71053 24.7337 5.61344 23.6366C4.51635 22.5395 3.90001 21.0515 3.90001 19.5C3.90001 17.9485 4.51635 16.4605 5.61344 15.3634C6.71053 14.2663 8.1985 13.65 9.75001 13.65H11.507Z"
+                                        fill="black" />
+                                    <path
+                                        d="M17.55 19.5C17.55 19.2414 17.6528 18.9934 17.8356 18.8106C18.0185 18.6277 18.2665 18.525 18.525 18.525C18.7836 18.525 19.0316 18.6277 19.2145 18.8106C19.3973 18.9934 19.5 19.2414 19.5 19.5V34.125C19.5 34.3836 19.3973 34.6316 19.2145 34.8144C19.0316 34.9973 18.7836 35.1 18.525 35.1C18.2665 35.1 18.0185 34.9973 17.8356 34.8144C17.6528 34.6316 17.55 34.3836 17.55 34.125V19.5Z"
+                                        fill="black" />
+                                    <path
+                                        d="M22.7917 29.4645C22.9946 29.3173 23.2463 29.2539 23.4947 29.2875C23.7431 29.321 23.969 29.4489 24.1256 29.6446C24.2821 29.8403 24.3573 30.0888 24.3355 30.3385C24.3137 30.5882 24.1966 30.8199 24.0085 30.9855L19.1335 34.8855C19.0345 34.9727 18.9189 35.0388 18.7935 35.08C18.6682 35.1212 18.5358 35.1365 18.4044 35.125C18.273 35.1136 18.1453 35.0755 18.029 35.0133C17.9127 34.951 17.8103 34.8658 17.7279 34.7628C17.6455 34.6598 17.5848 34.5411 17.5496 34.414C17.5144 34.2869 17.5053 34.154 17.523 34.0232C17.5406 33.8925 17.5846 33.7667 17.6523 33.6535C17.72 33.5403 17.8099 33.442 17.9167 33.3645L22.7917 29.4645Z"
+                                        fill="black" />
+                                    <path
+                                        d="M13.0415 30.9855C12.8533 30.8199 12.7362 30.5882 12.7145 30.3385C12.6927 30.0888 12.7678 29.8403 12.9244 29.6446C13.081 29.4489 13.3069 29.321 13.5553 29.2875C13.8036 29.2539 14.0554 29.3173 14.2583 29.4645L19.1333 33.3645C19.3214 33.5301 19.4385 33.7618 19.4603 34.0115C19.482 34.2612 19.4069 34.5096 19.2503 34.7054C19.0937 34.9011 18.8678 35.029 18.6194 35.0625C18.3711 35.096 18.1193 35.0327 17.9165 34.8855L13.0415 30.9855Z"
+                                        fill="black" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_84_351">
+                                        <rect width="39" height="39" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3 form-floating">
+                                <!-- <label for="recipient-name" class="col-form-label">태그</label>
+                                <input type="text" class="form-control mb-3" id="qc_tag" /> -->
+                                <input type="text" class="form-control" id="qc_tag" placeholder="태그를 입력해주세요.">
+                                <label for="qc_tag">태그를 입력해주세요.</label>
+                                <div id="content"></div>
+                            </div>
+                            <div class="mb-3 form-floating">
+                                <!-- <label for="recipient-name" class="col-form-label">태그</label>
+                                <input type="text" class="form-control mb-3" id="qc_tag" /> -->
+                                <input type="text" class="form-control" id="tq_title" placeholder="제목를 입력해주세요.">
+                                <label for="tq_title">제목을 입력해주세요.</label>
+                            </div>
+                            <div class="mb-3 form-floating">
+                                <!-- <label for="recipient-name" class="col-form-label">태그</label>
+                                <input type="text" class="form-control mb-3" id="qc_tag" /> -->
+                                <input type="text" class="form-control" id="tq_content" placeholder="내용을 입력해주세요.">
+                                <label for="tq_content">내용을 입력해주세요.</label>
+                            </div>
+                            <input clas="file-up" type="file" id="image" accept="image/*" onchange="setThumbnail(event);" />
+                            <!-- <button type="file" id="image" accept="image/*" >파일 업로드</button> -->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-today-c" data-mdb-dismiss="modal">
+                            닫기
+                        </button>
+                        <button type="button" class="btn btn-today-in">작성</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="modal fade" id="exampleModal01" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <!-- <form> -->
-                    <div class="container bootstrap snippets bootdey">
-                        <div class="col-sm-8">
-                            <div class="panel panel-white post panel-shadow">
-                                <div class="post-heading">
-                                    <div class="pull-left image">
-                                        <img src="https://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar"
-                                            alt="user profile image">
-                                    </div>
-                                    <div class="pull-left meta">
-                                        <div class="title h5">
-                                            <a href="#"><b>Ryan Haywood</b></a>
-                                            made a post.
+        <!-- 게시물 확인 -->
+        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal01"
+            data-mdb-whatever="@getbootstrap">
+            게시글 확인
+        </button>
+        <div class="modal fade" id="exampleModal01" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- <form> -->
+                        <div class="container">
+                            <div class="col-sm-12">
+                                <div class="post">
+                                    <div class="post-heading justify-content-between align-items-center">
+                                        <div class="detail_img">
+                                            <img src="https://bootdey.com/img/Content/user_1.jpg" class="avatar" alt="user profile image">
                                         </div>
-                                        <h6 class="text-muted time">1 minute ago</h6>
-                                    </div>
-                                </div>
-                                <div class="post-description">
-                                    <p>Bootdey is a gallery of free snippets resources templates and utilities for
-                                        bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                                    <div class="stats">
-                                        <a href="#" class="btn btn-default stat-item">
-                                            <i class="fa fa-thumbs-up icon"></i>2
-                                        </a>
-                                        <a href="#" class="btn btn-default stat-item">
-                                            <i class="fa fa-share icon"></i>12
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="post-footer">
-                                    <div class="input-group">
-                                        <input class="form-control" placeholder="Add a comment" type="text">
-                                        <span class="input-group-addon">
-                                            <a href="#"><i class="fa fa-edit"></i></a>
-                                        </span>
-                                    </div>
-                                    <ul class="comments-list">
-                                        <li class="comment">
-                                            <a class="pull-left" href="#">
-                                                <img class="avatar" src="https://bootdey.com/img/Content/user_1.jpg"
-                                                    alt="avatar">
-                                            </a>
-                                            <div class="comment-body">
-                                                <div class="comment-heading">
-                                                    <h4 class="user">Gavino Free</h4>
-                                                    <h5 class="time">5 minutes ago</h5>
-                                                </div>
-                                                <p>Sure, oooooooooooooooohhhhhhhhhhhhhhhh</p>
+                                        <div class="detail_title">
+                                            <div class="fs-5 title_size">
+                                                여기는 메인  Title
                                             </div>
-                                            <ul class="comments-list">
-                                                <li class="comment">
-                                                    <a class="pull-left" href="#">
-                                                        <img class="avatar"
-                                                            src="https://bootdey.com/img/Content/user_3.jpg"
-                                                            alt="avatar">
-                                                    </a>
-                                                    <div class="comment-body">
-                                                        <div class="comment-heading">
-                                                            <h4 class="user">Ryan Haywood</h4>
-                                                            <h5 class="time">3 minutes ago</h5>
-                                                        </div>
-                                                        <p>Relax my friend</p>
+                                            <h6 class="text-muted time">태그 불러오는 곳</h6>
+                                        </div>
+                                        <div class="detail_like">
+                                            <a href="#" class="btn btn-default stat-item">
+                                                <div class="post-like">
+                                                    <span class="heart-icon">
+                                                        <svg width="20" height="20" viewBox="0 0 76 59" fill="none">
+                                                            <path opacity="0.8" fill-rule="evenodd" clip-rule="evenodd" d="M44.1 14.7742C51.2736 1.93619 75.95 6.41968 75.95 24.9662C75.95 37.3632 65.3317 48.6724 44.1 58.9134C22.8683 48.6724 12.25 37.3583 12.25 24.9662C12.25 6.41968 36.9264 1.93619 44.1 14.7742V14.7742Z" fill="#AE0638" />
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M35.3633 56.2185C57.3545 45.6149 68.6 33.6295 68.6 20.0663C68.6 1.37278 44.786 -6.12912 34.3 5.66028C23.814 -6.12912 0 1.37278 0 20.0663C0 33.6295 11.2455 45.6149 33.2367 56.2185L34.3 56.733L35.3633 56.2185V56.2185ZM36.4413 11.0699C42.8505 -0.405915 63.7 5.01348 63.7 20.0663C63.7 31.0913 54.0617 41.5577 34.3 51.2891C14.5383 41.5577 4.9 31.0913 4.9 20.0663C4.9 5.01348 25.7495 -0.405915 32.1636 11.0699C32.1636 11.0699 33.2318 12.5301 34.3 12.5301C35.3682 12.5301 36.4413 11.0699 36.4413 11.0699V11.0699Z" fill="#1C1C1C" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="like-number">1</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="post-description">
+                                        <p>Bootdey is a gallery of free snippets resources templates and utilities for
+                                            bootstrap css hmtl js framework. Codes for developers and web designers</p>
+                                            <h6 class="text-muted time">현재시간</h6>
+                                    </div>
+                                    <div class="post-footer">
+                                        <!-- 댓글 섹션 (for문위치) -->
+                                        <ul class="comments-list">
+                                            <li class="comment">
+                                                <a class="pull-left" href="#">
+                                                    <img class="avatar" src="https://bootdey.com/img/Content/user_1.jpg"
+                                                        alt="avatar">
+                                                </a>
+                                                <div class="comment-body">
+                                                    <div class="comment-heading">
+                                                        <h4 class="user">Gavino Free</h4>
+                                                        <h5 class="time1">5 minutes ago</h5>
+                                                        </br>
+                                                        <h5 class="time2">여기는 location</h5>
                                                     </div>
-                                                </li>
-                                                <li class="comment">
-                                                    <a class="pull-left" href="#">
-                                                        <img class="avatar"
-                                                            src="https://bootdey.com/img/Content/user_2.jpg"
-                                                            alt="avatar">
-                                                    </a>
-                                                    <div class="comment-body">
-                                                        <div class="comment-heading">
-                                                            <h4 class="user">Gavino Free</h4>
-                                                            <h5 class="time">3 minutes ago</h5>
-                                                        </div>
-                                                        <p>Ok, cool.</p>
+                                                    <p>Sure, oooooooooooooooohhhhhhhhhhhhhhhh</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ul class="comments-list">
+                                            <li class="comment">
+                                                <a class="pull-left" href="#">
+                                                    <img class="avatar" src="https://bootdey.com/img/Content/user_1.jpg"
+                                                        alt="avatar">
+                                                </a>
+                                                <div class="comment-body">
+                                                    <div class="comment-heading">
+                                                        <h4 class="user">Gavino Free</h4>
+                                                        <h5 class="time1">5 minutes ago</h5>
+                                                        </br>
+                                                        <h5 class="time2">여기는 location</h5>
                                                     </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                                    <p>Sure, oooooooooooooooohhhhhhhhhhhhhhhh</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                        <!-- 댓글 작성하는 부분 -->
+                                    <div class="post-comment">
+                                        <form action="signup" method="post" name="info">
+                                            <div>
+                                                <div class="d-flex bd-highlight mb-3">
+                                                    <!-- <input type="file" class="btn p-2 bd-highlight btn-today-in">작성</input> -->
+                                                    <label class="btn btn-today-file" for="input_file">업로드</label> 
+                                                    <input class="me-auto bd-highlight form-control" placeholder="인풋넣는 곳" type="text">
+                                                    <button type="button" class="btn p-2 bd-highlight btn-today-in">작성</button>
+                                                </div>
+                                                <div>
+                                                    <div class="filebox bs3-primary preview-image">
+                                                        <!-- <input class="upload-name" value="파일선택" disabled="disabled" style="width: 200px;"> -->
+                                                        <input type="file" id="input_file" class="upload-hidden">
+                                                    </div>
+                                                    <!-- <div class="filebox bs3-primary preview-image">
+                                                        <label for="input_file">업로드</label> 
+                                                        <input type="file" id="input_file" class="upload-hidden"> -->
+                                                    <!-- </div> -->
+                                                    <!-- <input class="file-up" type="file" id="image" accept="image/*" onchange="setThumbnail(event);" /> -->
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- </form> -->
                     </div>
-                    <!-- </form> -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                        닫기
-                    </button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                            닫기
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-</body>
+        <script type="text/javascript" src="/js/post.js"></script>
+    </body>
 
 </html>

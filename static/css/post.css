@@ -20,15 +20,17 @@
 }
 
 .post .post-heading {
-    height: 95px;
-    padding: 20px 15px;
+    display: grid;
+    grid-template-columns: 100px 2fr 1fr;
+    height: 120px;
+    padding: 3%;
 }
 
-.post .post-heading .avatar {
-    width: 60px;
-    height: 60px;
+.avatar {
+    width: 80px;
+    height: 80px;
     display: block;
-    margin-right: 15px;
+    border-radius: 20px;
 }
 
 .post .post-heading .meta .title {
@@ -43,13 +45,9 @@
     color: #aaaaaa;
 }
 
-.post .post-heading .meta .time {
-    margin-top: 8px;
-    color: #999;
-}
 
 .post .post-image .image {
-    width: 100%;
+    width: 50px;
     height: auto;
 }
 
@@ -65,22 +63,9 @@
     margin-top: 20px;
 }
 
-.post .post-description .stats .stat-item {
-    display: inline-block;
-    margin-right: 15px;
-}
-
-.post .post-description .stats .stat-item .icon {
-    margin-right: 8px;
-}
-
 .post .post-footer {
     border-top: 1px solid #ddd;
     padding: 15px;
-}
-
-.post .post-footer .input-group-addon a {
-    color: #454545;
 }
 
 .post .post-footer .comments-list {
@@ -113,10 +98,17 @@
     margin-right: 10px;
 }
 
-.post .post-footer .comments-list .comment .comment-heading .time {
+.time1 {
     font-size: 12px;
     color: #aaa;
     margin-top: 0;
+    display: inline;
+}
+
+.time2 {
+    font-size: 12px;
+    color: rgb(176, 188, 255);
+    margin-top: -5px;
     display: inline;
 }
 
@@ -129,11 +121,10 @@
 }
 
 body {
-    padding: 20%;
+    padding: 15%;
 }
 
 /* 여기는 오늘의 소개 부분 */
-
 .today_info_all {
     background: #EEEEEE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -142,5 +133,178 @@ body {
 }
 
 .modal-content {
+    border-radius: 15px;
     border: 0 !important;
+}
+
+.form-control {
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+}
+
+#content {
+    margin-top: 3%;
+}
+
+.btn-today-c {
+    color:rgba(0, 0, 0, 0.276);
+    border-radius: 20px;
+    border-color: rgb(0, 0, 0);
+}
+
+.btn-today-in {
+    color:rgba(0, 0, 0, 0.276);
+    border-radius: 20px;
+    border-color: rgb(24, 42, 244);
+}
+
+.file-up {
+    margin: 10px 0px 3px 1%;
+}
+
+.post_board {
+    vertical-align: middle;
+    text-align: left;
+}
+
+.stat-item{
+    width: 60px;
+}
+
+.detail_img {
+    margin: auto;
+}
+
+.detail_title {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.detail_like {
+    text-align: center;
+}
+
+
+.title_size {
+    margin-bottom: 2%;
+}
+
+.post-comment {
+    border-top: 1px solid #ddd;
+    padding: 15px;
+}
+
+.post-comment {
+    border-top: 1px solid #ddd;
+    padding: 15px;
+}
+
+.btn-today-file {
+    border-radius: 50px;
+}
+
+.me-auto {
+    width: 285px;
+    margin: auto;
+}
+
+
+/* 테스트 확인 */
+/* 테스트 확인 */
+/* 테스트 확인 */
+/* 테스트 확인 */
+/* 테스트 확인 */
+/* 테스트 확인 */
+/* 테스트 확인 */
+
+
+
+body {margin: 10px;}
+.where {
+    display: block;
+    margin: 25px 15px;
+    font-size: 11px;
+    color: #000;
+    text-decoration: none;
+    font-family: verdana;
+    font-style: italic;
+} 
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: #999;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+}
+
+/* named upload */
+.filebox .upload-name {
+    display: inline-block;
+    padding: .5em .75em;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #f5f5f5;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* imaged preview */
+.filebox .upload-display {
+    margin-bottom: 5px;
+}
+
+@media(min-width: 768px) {
+    .filebox .upload-display {
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 0;
+}   
+}
+
+.filebox .upload-thumb-wrap {
+    display: inline-block;
+    width: 120px;
+    padding: 2px;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.filebox .upload-display img {
+    display: block;
+    max-width: 100%;
+    width: 100% \9;
+    height: auto;
+}
+
+.filebox.bs3-primary label {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
 }

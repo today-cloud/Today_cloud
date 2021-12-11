@@ -1,17 +1,71 @@
-const exampleModal = document.getElementById('exampleModal')
-// const exampleModal = bootstrap.Modal(document.getElementById('exampleModal'), options)
-exampleModal.addEventListener('show.mdb.modal', (event) => {
-  // Button that triggered the modal
-  const button = event.relatedTarget
-  // Extract info from data-mdb-* attributes
-  const recipient = button.getAttribute('data-mdb-whatever')
-  // If necessary, you could initiate an AJAX request here
-  // and then do the updating in a callback.
-  //
-  // Update the modal's content.
-  const modalTitle = exampleModal.querySelector('.modal-title')
-  const modalBodyInput = exampleModal.querySelector('.modal-body input')
+$(document).ready (function (e) {
+    var n_num = 0;
+    var end_num = 3;
+    $("#qc_tag").keydown(function(e) {
+    var n_value = $("#qc_tag").val();
+    var name = "<div name=tag_"+n_num+">"+"# "+n_value+"&nbsp"+"<i class='fas fa-times btnDelete'></i></div>"
+    var input_dis = document.getElementById('name=tag_'+n_num);
 
-  modalTitle.textContent = `New message to ${recipient}`
-  modalBodyInput.value = recipient
-})
+    if ( end_num != n_num ) {
+        if ( e.keyCode == 13 ) {
+                $('#content').append(name);
+                n_num ++;
+                $('#qc_tag').val("");
+            }
+    } else {
+        $("#qc_tag").attr("disabled", true);
+        alert ("2개까지만 작성합니다.");
+    } 
+    });
+    $("#content").on('click', '.btnDelete', function () {
+        $(this).closest('div').remove();
+        n_num --;
+        $("#qc_tag").attr("disabled", false);
+    });
+});
+
+
+$(document).ready(function(){
+    var fileTarget = $('.filebox .upload-hidden');
+    fileTarget.on('change', function(){
+        if(window.FileReader){
+             // 파일명 추출
+            var filename = $(this)[0].files[0].name;
+        } 
+
+        else {
+             // Old IE 파일명 추출
+            var filename = $(this).val().split('/').pop().split('\\').pop();
+        };
+
+        $(this).siblings('.upload-name').val(filename);
+    });
+
+     //preview image 
+    var imgTarget = $('.preview-image .upload-hidden');
+
+    imgTarget.on('change', function(){
+        var parent = $(this).parent();
+        parent.children('.upload-display').remove();
+
+        if(window.FileReader){
+             //image 파일만
+            if (!$(this)[0].files[0].type.match(/image\//)) return;
+            
+            var reader = new FileReader();
+            reader.onload = function(e){
+                var src = e.target.result;
+                parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>');
+            }
+            reader.readAsDataURL($(this)[0].files[0]);
+        } else {
+            $(this)[0].select();
+            $(this)[0].blur();
+            var imgSrc = document.selection.createRange().text;
+            parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+
+            var img = $(this).siblings('.upload-display').find('img');
+            img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";        
+        }
+    });
+});
