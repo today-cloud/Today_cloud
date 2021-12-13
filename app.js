@@ -33,7 +33,6 @@ app.use(body.json());
 app.use( '/', express.static(path.join(__dirname, 'views') ) )
 app.use( express.static(path.join(__dirname, 'static') ) )
 
-// view의 확장인 ejs 를 사용하도록 도와주는 장치
 app.set( 'view engine', 'ejs');
 app.set( 'views', __dirname + '/views');
 
@@ -71,28 +70,7 @@ function tag_sql(callback){
     }
   })
 }
-// ############################################################################### SSL 수정 부분 ##############
-// const options = { // letsencrypt로 받은 인증서 경로를 입력
-//   ca: fs.readFileSync('/etc/letsencrypt/live/todaycloud.shop/fullchain.pem'),
-//   key: fs.readFileSync('/etc/letsencrypt/live/todaycloud.shop/privkey.pem'),
-//   cert: fs.readFileSync('/etc/letsencrypt/live/todaycloud.shop/cert.pem')
-// };
 http.createServer(app).listen(port);
-//https.createServer(options, app).listen(443);
-// https.createServer(options, (req, res) => {
-//   console.log('필요한 코드 넣기');
-// }).listen(8000, function() {
-//   console.log('서버 포트: 80 ...');
-// });
-
-// ##################react 불러오는 곳#########################
-// app.use( '/react', express.static(path.join(__dirname, 'react_today/build') ) );
-
-// ##################react 불러오는 곳#########################
-// app.get( '/react', ( req, res ) => {
-// res.sendFile( path.join(__dirname, 'views/main.html') )
-// res.sendFile( path.join(__dirname, 'views/main.html') )
-// });
 
 app.get('/indexAll',(req,res)=>{
   console.log('req 완료 확인페이지');
@@ -111,9 +89,7 @@ app.get('/post',(req,res)=>{
   res.render('post');
 });
 
-// ######################################################
 // ##############  회원가입  ##################
-// ######################################################
 app.get('/signup',(req,res)=>{
   console.log('회원가입 요청');
   res.render('signup');
@@ -136,9 +112,7 @@ app.post('/signup',(req,res)=>{
   });
 });
 
-// ######################################################
 // ##############  로그인  ##################
-// ######################################################
 app.get('/login',(req,res)=>{
   console.log('login 들어왔다');
   res.render('login');
@@ -161,28 +135,30 @@ app.post('/login',(req,res)=>{
   });
 });
 
-// ######################################################
 // ##############  로그아웃  ##################
-// ######################################################
 app.get('/logout',(req,res)=>{
   if(!req.session.uid){
-    res.send('로그인이 필요한 서비스 입니다.');
+    res.status(400).send('로그인이 필요한 서비스 입니다.');
   }else{
     req.session.destroy();
     res.redirect('login');
   }
 });
 
-// ######################################################
 // ##############  회원정보 찾기  ##################
-// ######################################################
 app.get('/search',(req,res)=>{
   res.render('search');
 });
 
-// ######################################################
 // ##############  회원정보 수정  ##################
-// ######################################################
+app.get('/update', (req, res) => {
+  if (req.session.uid) {
+    res.render('update');
+  } else {
+    res.status(400).send('로그인이 필요한 서비스 입니다.');
+  }
+})
+
 app.post('/update',(req,res)=>{
   var eid = req.body.user_Eid;
   var pw = req.body.user_Pw;
@@ -214,10 +190,7 @@ app.post('/update',(req,res)=>{
   });
 });
 
-
-// ######################################################
 // ##############  회원탈퇴  ##################
-// ######################################################
 app.get('/delete',(req,res)=>{
   var sql = "delete from T_User where user_Num = "+req.session.uid;
   conn.query(sql,function(err){
@@ -229,17 +202,22 @@ app.get('/delete',(req,res)=>{
   });
 });
 
-// ######################################################
-// ##############  main  ##################
-// ######################################################
+// ##############  main page  ##################
 app.get('/main',(req,res)=>{
   res.render('main');
 });
+
+// ##############  현재 위치 확인  #################
+app.get('/gps', (req, res) => {
+  console.log('gps 확인 중...')
+  res.render('gps');
+})
 
 app.get('/t_c_info',(req,res)=>{
   res.render('t_c_info');
 })
 
+// ############## main page - session check ##############
 // app.get('/main',(req,res)=>{
 //   var sql = "select * from T_User where user_Num = '" + req.session.uid +"'";
 //   conn.query(sql,function(err,result){
@@ -254,10 +232,8 @@ app.get('/t_c_info',(req,res)=>{
 //   });
 // });
 
-// ######################################################
 // ##############  파일업로더  ##################
 // ##############  게시판  ##################
-// ######################################################
 var storage = multer.diskStorage({
   destination: function(req, file, cb){
     if(file.mimetype == "image/jpeg" || file.mimetype == "image/jpg" || file.mimetype == "image/png"){
@@ -276,7 +252,7 @@ app.get( '/', ( req, res ) => {
   res.render('userinfo');
 });
 
-// board write
+// ##############  board write  #################
 app.get('/board',(req,res)=>{
   if(req.session.uid){
     res.render('boardwrite');
