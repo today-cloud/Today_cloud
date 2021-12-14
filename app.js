@@ -100,6 +100,8 @@ function main_latest_sort(callback){
     if(err){
       console.log(err);
     }else{
+      console.log('----난수-----');
+      console.log(Math.random().toString(36).substr(2,11));
       callback(results);
     }
   });
@@ -254,7 +256,19 @@ app.get('/delete',(req,res)=>{
 
 // ##############  main page  ##################
 app.get('/',(req,res)=>{
-  res.render('main');
+  console.log('req 완료 확인페이지');
+  console.log('--------');
+  if(req.session.uid){
+    user_sql(req,function(user){
+      main_latest_sort(function(info){
+        console.log('----들어옴---');
+        console.log(info);
+        res.render('main',{info:info});
+      });
+    });
+  }else{
+    res.redirect('../login');
+  }
 });
 
 // ##############  현재 위치 확인  #################
