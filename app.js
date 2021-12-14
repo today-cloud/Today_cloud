@@ -131,6 +131,7 @@ app.get('/userinfo',(req,res)=>{
   console.log('userinfo in');
   res.render('userinfo');
 });
+
 app.get('/post',(req,res)=>{
   console.log('post페이지 연다.');
   res.render('post');
