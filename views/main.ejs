@@ -162,7 +162,13 @@
                     <div>Weekly Tags</div>
                     <ul>
                         <li>#전체</li>
-                        <li>#전체</li>
+                        <%
+                            for(var i = 0; i<tag.length;i++){
+                        %>
+                                <li><%=tag[i].tag_Tagname%></li>
+                        <%
+                            }
+                        %>
                     </ul>
                 </div>
             </div>

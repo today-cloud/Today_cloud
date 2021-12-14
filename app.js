@@ -112,9 +112,11 @@ app.get('/indexAll',(req,res)=>{
   if(req.session.uid){
     user_sql(req,function(user){
       main_latest_sort(function(info){
-        console.log('----들어옴---');
-        console.log(info);
-        res.render('main',{info:info});
+        tag_sql(function(tag){
+          console.log('---------tag-----');
+          console.log(tag);
+          res.render('main',{info:info,tag:tag});
+        });
       });
     });
   }else{
