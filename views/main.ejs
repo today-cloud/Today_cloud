@@ -223,7 +223,7 @@
                                     <div class="user-profile">
                                         <img src="img/logo.png" alt="">
                                     </div>
-                                    <div class="user-nick">마틸다</div>
+                                    <div class="user-nick"><%=info[i].user_Name%></div>
                                 </div>
                                 <div class="news-cloud">
                                     <div>
@@ -247,9 +247,19 @@
                                 </div>
                                 <div class="today-tags">
                                     <ul>
-                                        <li>#문래동</li>
-                                        <li>#비빔국수</li>
-                                        <li>#맛집</li>
+                        <%
+                                if(info[i].tag){
+
+                                    var t = info[i].tag.split(',');
+                                    console.log(t.length);
+                                    console.log(t[0]);
+                                    for(var j=0;j<t.length;j++){
+                        %>
+                                        <li><%=t[j]%></li>
+                        <%
+                                    }
+                                }
+                        %>
                                     </ul>
                                 </div>
                             </div>

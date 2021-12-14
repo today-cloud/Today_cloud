@@ -100,8 +100,6 @@ function main_latest_sort(callback){
     if(err){
       console.log(err);
     }else{
-      console.log('-----------------main------확인');
-      console.log(results);
       callback(results);
     }
   });
@@ -112,8 +110,12 @@ app.get('/indexAll',(req,res)=>{
   console.log('req 완료 확인페이지');
   console.log('--------');
   if(req.session.uid){
-    main_latest_sort(req,function(info){
-      res.render('main',{info:info});
+    user_sql(req,function(user){
+      main_latest_sort(function(info){
+        console.log('----들어옴---');
+        console.log(info);
+        res.render('main',{info:info});
+      });
     });
   }else{
     res.redirect('../login');
