@@ -70,20 +70,67 @@ function tag_sql(callback){
     }
   })
 }
+function main_like_sort(callback){
+  const sql = `
+		select u.user_Name, u.user_Profile, b.board_Content,count(distinct g.good_pk) as board_like, group_concat(distinct t.tag_Tagname) as tag
+		from T_Board as b 
+		join T_User as u on b.user_Num = u.user_Num
+		left join T_Good as g on b.board_Num = g.board_Num
+		left join T_Tag as t on b.board_Num = t.board_Num
+		group by b.board_Num order by count(distinct g.good_pk) desc;
+	`;
+  conn.query(sql,function(err,results){
+    if(err){
+      console.log(err);
+    }else{
+      callback(results);
+    }
+  });
+}
+function main_latest_sort(callback){
+  const sql = `
+		select u.user_Name, u.user_Profile, b.board_Content,count(distinct g.good_pk) as board_like, group_concat(distinct t.tag_Tagname) as tag
+		from T_Board as b 
+		join T_User as u on b.user_Num = u.user_Num
+		left join T_Good as g on b.board_Num = g.board_Num
+		left join T_Tag as t on b.board_Num = t.board_Num
+		group by b.board_Num order by b.board_Date desc;
+	`;
+  conn.query(sql,function(err,results){
+    if(err){
+      console.log(err);
+    }else{
+      console.log('-----------------main------확인');
+      console.log(results);
+      callback(results);
+    }
+  });
+}
 http.createServer(app).listen(port);
 
 app.get('/indexAll',(req,res)=>{
   console.log('req 완료 확인페이지');
   console.log('--------');
-  user_sql(req,function(user){
-    board_sql(function(board){
-      tag_sql(function(tag){
-        res.render('main',{uesr:user,board:board,tag:tag});
-      });
+  if(req.session.uid){
+    main_latest_sort(req,function(info){
+      res.render('main',{info:info});
     });
-  });
+  }else{
+    res.redirect('../login');
+  }
+  // user_sql(req,function(user){
+  //   board_sql(function(board){
+  //     tag_sql(function(tag){
+  //       res.render('main',{uesr:user,board:board,tag:tag});
+  //     });
+  //   });
+  // });
 });
 
+app.get('/userinfo',(req,res)=>{
+  console.log('userinfo in');
+  res.render('userinfo');
+});
 app.get('/post',(req,res)=>{
   console.log('post페이지 연다.');
   res.render('post');
