@@ -203,7 +203,7 @@ app.get('/delete',(req,res)=>{
 });
 
 // ##############  main page  ##################
-app.get('/main',(req,res)=>{
+app.get('/',(req,res)=>{
   res.render('main');
 });
 
@@ -211,11 +211,11 @@ app.get('/main',(req,res)=>{
 app.get('/gps', (req, res) => {
   console.log('gps 확인 중...')
   res.render('gps');
-})
+});
 
 app.get('/t_c_info',(req,res)=>{
   res.render('t_c_info');
-})
+});
 
 // ############## main page - session check ##############
 // app.get('/main',(req,res)=>{
@@ -247,10 +247,6 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({storage : storage});
-
-app.get( '/', ( req, res ) => {
-  res.render('userinfo');
-});
 
 // ##############  board write  #################
 app.get('/board',(req,res)=>{
