@@ -107,8 +107,6 @@ function main_latest_sort(callback){
 http.createServer(app).listen(port);
 
 app.get('/indexAll',(req,res)=>{
-  console.log('req 완료 확인페이지');
-  console.log('--------');
   if(req.session.uid){
     user_sql(req,function(user){
       main_latest_sort(function(info){
@@ -255,9 +253,11 @@ app.get('/delete',(req,res)=>{
 // ##############  main page  ##################
 app.get('/',(req,res)=>{
   main_latest_sort(function(info){
-    console.log('----들어옴---');
-    console.log(info);
-    res.render('main',{info:info});
+    tag_sql(function(tag){
+      console.log('---------tag-----');
+      console.log(tag);
+      res.render('main',{info:info,tag:tag});
+    });
   });
 });
 
