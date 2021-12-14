@@ -256,19 +256,11 @@ app.get('/delete',(req,res)=>{
 
 // ##############  main page  ##################
 app.get('/',(req,res)=>{
-  console.log('req 완료 확인페이지');
-  console.log('--------');
-  if(req.session.uid){
-    user_sql(req,function(user){
-      main_latest_sort(function(info){
-        console.log('----들어옴---');
-        console.log(info);
-        res.render('main',{info:info});
-      });
-    });
-  }else{
-    res.redirect('../login');
-  }
+  main_latest_sort(function(info){
+    console.log('----들어옴---');
+    console.log(info);
+    res.render('main',{info:info});
+  });
 });
 
 // ##############  현재 위치 확인  #################
