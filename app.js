@@ -100,8 +100,6 @@ function main_latest_sort(callback){
     if(err){
       console.log(err);
     }else{
-      console.log('----난수-----');
-      console.log(Math.random().toString(36).substr(2,11));
       callback(results);
     }
   });
@@ -150,10 +148,8 @@ app.post('/signup',(req,res)=>{
   var eid = req.body.user_Eid;
   var pw = req.body.user_Pw;
   var name = req.body.user_Name;
-  console.log(eid);
-  console.log(pw);
-  console.log(name);
-  const sql = "insert into T_User (user_Eid,user_Pw,user_Name) values ('"+req.body.user_Eid+"','"+req.body.user_Pw+"','"+req.body.user_Name+"');";
+  var nick = Math.random().toString(36).substr(2,11);
+  const sql = "insert into T_User (user_Eid,user_Pw,user_Name,user_Nick) values ('"+eid+"','"+pw+"','"+name+"','"+nick+"');";
   conn.query(sql,function(err,result){
     if(err){
       console.log(err);
