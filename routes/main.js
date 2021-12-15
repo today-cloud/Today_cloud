@@ -85,7 +85,6 @@ function board_sql(callback){
 
 function board_good(req,callback){
   var uid = req.session.uid;
-  var board=[];
   const sql = "select * from T_Good where user_Num = '"+uid+"';";
   conn.query(sql, function(err,results){
     if(err){
@@ -98,12 +97,32 @@ function board_good(req,callback){
   });
 }
 
+function login_session(req,callback){
+  var uid = req.session.uid;
+  const sql = "select * from T_User where user_Num = '"+uid+"';";
+  conn.query(sql,function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      if(result.length>0){
+        callback(1);
+      }else{
+        callback(0);
+      }
+    }
+  });
+};
+
 // ##############  main page  ##################
 router.get('/',(req,res)=>{
   main_latest_sort(function(info){
     tag_sql(function(tag){
       board_good(req,function(board){
-        res.render('main',{info:info,tag:tag,board_good:board});
+        login_session(req,function(ck){
+          console.log('ck check main check');
+          console.log(ck);
+          res.render('main',{info:info,tag:tag,board_good:board,ck:ck});
+        });
       });
     });
   });
@@ -115,9 +134,11 @@ router.get('/indexAll',(req,res)=>{
       main_latest_sort(function(info){
         tag_sql(function(tag){
           board_good(req,function(board){
-            console.log('board content');
-            console.log(board);
-            res.render('main',{info:info,tag:tag,board_good:board});
+            login_session(req,function(ck){
+              console.log('ck check indexAll check');
+              console.log(ck);
+              res.render('main',{info:info,tag:tag,board_good:board,ck:ck});
+            });
           });
         });
       });
