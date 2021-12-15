@@ -13,7 +13,7 @@ var conn = mysql.createConnection({
 
 function main_latest_sort(callback){
   const sql = `
-		select u.user_Name, u.user_Profile, b.board_Content,count(distinct g.good_pk) as board_like, group_concat(distinct t.tag_Tagname) as tag
+		select b.board_Num as bnum, u.user_Name, u.user_Profile, b.board_Content,count(distinct g.good_pk) as board_like, group_concat(distinct t.tag_Tagname) as tag
 		from T_Board as b 
 		join T_User as u on b.user_Num = u.user_Num
 		left join T_Good as g on b.board_Num = g.board_Num
@@ -83,13 +83,28 @@ function board_sql(callback){
   });
 }
 
+function board_good(req,callback){
+  var uid = req.session.uid;
+  var board=[];
+  const sql = "select * from T_Good where user_Num = '"+uid+"';";
+  conn.query(sql, function(err,results){
+    if(err){
+      console.log(err);
+    }else{
+      console.log('좋아요 누른 게시글 목록');
+      console.log(results);
+      callback(results);
+    }
+  });
+}
+
 // ##############  main page  ##################
 router.get('/',(req,res)=>{
   main_latest_sort(function(info){
     tag_sql(function(tag){
-      console.log('---------tag-----');
-      console.log(tag);
-      res.render('main',{info:info,tag:tag});
+      board_good(req,function(board){
+        res.render('main',{info:info,tag:tag,board_good:board});
+      });
     });
   });
 });
@@ -99,9 +114,11 @@ router.get('/indexAll',(req,res)=>{
     user_sql(req,function(user){
       main_latest_sort(function(info){
         tag_sql(function(tag){
-          console.log('---------tag-----');
-          // console.log(tag);
-          res.render('main',{info:info,tag:tag});
+          board_good(req,function(board){
+            console.log('board content');
+            console.log(board);
+            res.render('main',{info:info,tag:tag,board_good:board});
+          });
         });
       });
     });

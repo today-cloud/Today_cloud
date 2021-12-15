@@ -218,7 +218,8 @@
                 <div class="row s-box">
                     <div class="post-scroll">
                         <%
-                            for(var i = 0; i < info.length; i++){
+                        var count = 0;
+                        for(var i = 0; i < info.length; i++){
                         %>
                             <div class="today-news">
                                 <div class="today-profile">
@@ -244,7 +245,24 @@
                                                       fill="#1C1C1C" />
                                             </svg>
                                         </div>
-                                        <div class="like-number"><%=info[i].board_like%></div>
+                                        <%
+                                            for(var b = 0; b<board_good.length;b++){
+                                                if(board_good[b].board_Num == info[i].bnum){
+                                        %>
+                                                    <div class="like-number"><%=info[i].board_like%>Check</div>
+                                        <%
+                                                    count=0;
+                                                    break;
+                                                }
+                                            count++;
+                                        }
+                                            if(count == board_good.length){
+                                        %>
+                                                <div class="like-number"><%=info[i].board_like%></div>
+                                        <%
+                                                count=0;
+                                            }
+                                        %>
                                     </div>
                                 </div>
                                 <div class="today-tags">
