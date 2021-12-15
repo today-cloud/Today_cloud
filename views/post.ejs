@@ -157,7 +157,7 @@
                                             <h6 class="text-muted time">태그 불러오는 곳</h6>
                                         </div>
                                         <div class="detail_like">
-                                            <a href="#" class="btn btn-default stat-item">
+                                            <a href="#" class="btn btn-default stat-item" name="b-like-cc">
                                                 <div class="post-like">
                                                     <span class="heart-icon">
                                                         <svg width="20" height="20" viewBox="0 0 76 59" fill="none">
@@ -165,7 +165,7 @@
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M35.3633 56.2185C57.3545 45.6149 68.6 33.6295 68.6 20.0663C68.6 1.37278 44.786 -6.12912 34.3 5.66028C23.814 -6.12912 0 1.37278 0 20.0663C0 33.6295 11.2455 45.6149 33.2367 56.2185L34.3 56.733L35.3633 56.2185V56.2185ZM36.4413 11.0699C42.8505 -0.405915 63.7 5.01348 63.7 20.0663C63.7 31.0913 54.0617 41.5577 34.3 51.2891C14.5383 41.5577 4.9 31.0913 4.9 20.0663C4.9 5.01348 25.7495 -0.405915 32.1636 11.0699C32.1636 11.0699 33.2318 12.5301 34.3 12.5301C35.3682 12.5301 36.4413 11.0699 36.4413 11.0699V11.0699Z" fill="#1C1C1C" />
                                                         </svg>
                                                     </span>
-                                                    <span class="like-number">1</span>
+                                                    <span class="b-like-number" name="b-like-number">1</span>
                                                 </div>
                                             </a>
                                         </div>
@@ -187,6 +187,17 @@
                                                     <div class="comment-heading">
                                                         <h4 class="user">Gavino Free</h4>
                                                         <h5 class="time1">5 minutes ago</h5>
+                                                            <a href="#" class="btn btn-default stat-item offset-md-4" name="c-like-cc">
+                                                                <div class="post-like">
+                                                                    <span class="heart-icon">
+                                                                        <svg width="15" height="15" viewBox="0 0 76 59" fill="none">
+                                                                            <path opacity="0.8" fill-rule="evenodd" clip-rule="evenodd" d="M44.1 14.7742C51.2736 1.93619 75.95 6.41968 75.95 24.9662C75.95 37.3632 65.3317 48.6724 44.1 58.9134C22.8683 48.6724 12.25 37.3583 12.25 24.9662C12.25 6.41968 36.9264 1.93619 44.1 14.7742V14.7742Z" fill="#AE0638" />
+                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M35.3633 56.2185C57.3545 45.6149 68.6 33.6295 68.6 20.0663C68.6 1.37278 44.786 -6.12912 34.3 5.66028C23.814 -6.12912 0 1.37278 0 20.0663C0 33.6295 11.2455 45.6149 33.2367 56.2185L34.3 56.733L35.3633 56.2185V56.2185ZM36.4413 11.0699C42.8505 -0.405915 63.7 5.01348 63.7 20.0663C63.7 31.0913 54.0617 41.5577 34.3 51.2891C14.5383 41.5577 4.9 31.0913 4.9 20.0663C4.9 5.01348 25.7495 -0.405915 32.1636 11.0699C32.1636 11.0699 33.2318 12.5301 34.3 12.5301C35.3682 12.5301 36.4413 11.0699 36.4413 11.0699V11.0699Z" fill="#1C1C1C" />
+                                                                        </svg>
+                                                                    </span>
+                                                                    <span class="c-like-number" name="c-like-number">1</span>
+                                                                </div>
+                                                            </a>
                                                         </br>
                                                         <h5 class="time2">여기는 location</h5>
                                                     </div>
@@ -216,17 +227,17 @@
                                     <div class="post-comment">
                                         <form action="signup" method="post" name="info">
                                             <div>
-                                                <div class="d-flex bd-highlight mb-3">
+                                                <div class="filebox bs3-primary preview-image">
+                                                    <!-- <input class="upload-name" value="파일선택" disabled="disabled" style="width: 200px;"> -->
+                                                    <input type="file" id="input_file" class="upload-hidden">
+                                                </div>
+                                                <div class="d-flex bd-highlight mt-3">
                                                     <!-- <input type="file" class="btn p-2 bd-highlight btn-today-in">작성</input> -->
                                                     <label class="btn btn-today-file" for="input_file">업로드</label> 
                                                     <input class="me-auto bd-highlight form-control" placeholder="인풋넣는 곳" type="text">
                                                     <button type="button" class="btn p-2 bd-highlight btn-today-in">작성</button>
                                                 </div>
                                                 <div>
-                                                    <div class="filebox bs3-primary preview-image">
-                                                        <!-- <input class="upload-name" value="파일선택" disabled="disabled" style="width: 200px;"> -->
-                                                        <input type="file" id="input_file" class="upload-hidden">
-                                                    </div>
                                                     <!-- <div class="filebox bs3-primary preview-image">
                                                         <label for="input_file">업로드</label> 
                                                         <input type="file" id="input_file" class="upload-hidden"> -->

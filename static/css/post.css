@@ -169,11 +169,15 @@ body {
 }
 
 .stat-item{
-    width: 60px;
+
 }
 
 .detail_img {
     margin: auto;
+}
+
+.c-like-number {
+    font-size: 8px;
 }
 
 .detail_title {
