@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+html {
+    overflow: hidden;
+}
 * {
     margin: 0;
     padding: 0;
@@ -10,13 +13,16 @@
 body {
     height: 100vh;
     background: linear-gradient(180deg, #D9E5EE 0%, #EBEDF2 46.88%, #EBEFF2 100%);
-    padding: 0 6%;
+    padding: 0 10%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 @media (max-width: 600px) {
     body {
-        height: 100vh;
         background: #f5fafd;
         padding: 0 1.5%;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 }

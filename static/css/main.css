@@ -28,7 +28,7 @@
     width: 5px;
     height: 5px;
     background: rgba(237, 237, 237, 0.8);
-    box-shadow: 0 0 15px 10px rgba(237, 237, 237, 0.5);
+    box-shadow: 0 0 15px 10px  rgb(237 237 237 / 0.5%);
     animation: fall 26s 4s infinite;
 }
 
@@ -946,18 +946,24 @@
 } */
 
 .navbar {
-    padding: 0;
-    margin: 50px 0 36px;
+    padding: 1% 4% 0% 11%;
+    /*margin: 20px 15px;*/
 }
 
-.todaycloud-logo img {
-    padding-left: 10%;
-    width: 200px;
-    height: auto;
+.navbar-brand {
+    /*padding-left: 10%;*/
+    width: 150px;
+    /*margin-left: 50%;*/
+    height: 100px;
+}
+
+.logo_size {
+    width: 150px;
 }
 
 .navbar-expand-lg .navbar-collapse {
     justify-content: flex-end;
+    text-align: right;
 }
 
 .navbar-nav li {
@@ -990,9 +996,9 @@
 /* weekly sidebar */
 
 .main-sidebar {
-    margin-top: 92px;
+    margin-top: 1.3%;
     text-align: center;
-    padding: 0 38px
+    padding: 0 4%;
 }
 
 .weekly_tags {
@@ -1002,10 +1008,10 @@
 
 .weekly_tags div {
     background: #E7F1F5;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
     border-radius: 26px;
-    font-size: 1.876rem;
-    padding: 17px 0;
+    font-size: 1.1rem;
+    padding: 4px 0;
 }
 
 .weekly_tags ul {
@@ -1015,15 +1021,15 @@
 .weekly_tags ul li {
     text-align: center;
     border-radius: 26px;
-    margin-top: 19px;
-    padding: 10px 0;
-    font-size: 1.523rem;
+    margin-top: 6px;
+    padding: 2px 0;
+    font-size: 1rem;
 }
 
 .weekly_tags ul li:hover {
     background: rgba(255, 255, 255, 0.712);
-    box-shadow: 7px 5px 2px rgba(0, 0, 0, 0.25);
-    transition: .5s ease-in-out;
+    box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.25);
+    transition: .2s ease-in-out;
 }
 
 /*  */
@@ -1032,25 +1038,29 @@
 
 .whats-today {
     background-color: #AACBDB;
-    height: 79px;
+    height: 50px;
     opacity: 0.5;
-    border-radius: 27px;
+    border-radius: 50px;
     display: flex;
     align-items: center;
-    padding: 18px;
+    padding: 1.3%;
+    width: 80%;
+    margin: auto;
+}
+.cloud-put {
+    vertical-align: middle;
 }
 
 .whats-today:hover,
 .today-news:hover {
-    box-shadow: 7px 6px 17px 5px rgba(53, 50, 50, 0.25);
+    box-shadow: 4px 4px 10px 2px rgb(0 191 255 / 25%);
     transition: .4s ease-in;
 }
 
 .cloud-svg {
     background-color: #EEEEEE;
-    width: 53px;
-    height: 53px;
-    padding: 6px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     margin-right: 19px;
@@ -1068,40 +1078,43 @@
     border-radius: 16px;
     justify-content: space-between;
     padding: 0 10px;
-    line-height: 42px;
+    /*line-height: 33px;*/
 }
 
 .today-news {
-    background-color: #E3E3E3;
+    background-color: #F8F8FF;
     opacity: 0.5;
-    box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 8px 1px rgb(0 0 0 / 30%);
     border-radius: 27px;
-    padding: 50px 50px;
+    padding: 1% 5%;
     display: grid;
     grid-template-columns: 1.3fr 7fr;
-    margin: 64px 15px 0 20px;
+    margin: 3% 8% 3% 8%;
+    /*height: 30%;*/
 }
 
 .today-profile {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 10%;
 }
 
 .user-profile,
 .user-profile img {
-    width: 90px;
-    height: 90px;
-    box-shadow: inset 4px 5px 6px rgba(0, 0, 0, 0.25);
+    width: 50px;
+    height: 50px;
+    box-shadow: inset 4px 5px 6px  rgb(0 0 0 / 25%);
     border-radius: 50%;
 }
 
 .news-cloud {
     background-color: #EEEEEE;
     border-radius: 27px;
-    box-shadow: inset 2px 3px 5px rgba(0, 0, 0, 0.25);
-    padding: 19px 29px;
-    margin-left: 19px;
+    box-shadow: inset 1px 1px 2px rgb(0 0 0 / 25%);
+    padding: 15px 23px;
+    margin: 2% 0% 0% 3%;
+    height: 60px;
 }
 
 .news-cloud div {
@@ -1111,11 +1124,12 @@
 .today-tags ul {
     display: flex;
     padding: 0;
-    margin: 16px 0 0 11px
+    margin: 2% 0 0 5%;
 }
 
 .today-tags ul li {
-    padding: 10px;
+    font-size: small;
+    padding: 5px;
     background-color: #C5D3DB;
     border-radius: 27px;
     margin-right: 12px;
@@ -1127,7 +1141,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 24px;
+    margin-top: 12%;
 }
 
 .post-like {
@@ -1140,10 +1154,10 @@
 }
 
 .user-nick {
-    font-size: 1.53110rem;
+    font-size: 0.9rem;
     color: #1d1b1b;
     font-weight: 500;
-    margin-top: 10px;
+    margin-top: 4px;
 }
 
 
@@ -1163,7 +1177,7 @@
     display: block;
     height: 740px;
     overflow: auto;
-    margin-top: 19px;
+    margin: 4px 0px 0px 15px;
 }
 
 .post-scroll::-webkit-scrollbar {
@@ -1177,10 +1191,18 @@
         display: flex;
         flex-direction: column;
     }
-
+    .whats-today {
+        margin-left: 7px;
+        margin-right: 7px;
+        width: 82%;
+        margin: auto;
+    }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1000px) {
+    .navbar {
+        padding: 1% 8% 0% 9%;
+    }
     .main-sidebar {
         display: none;
     }
@@ -1188,17 +1210,23 @@
     .main-contents {
         width: 100%;
     }
+    .whats-today {
+        margin-left: 7px;
+        margin-right: 7px;
+        width: 82%;
+        margin: auto;
+    }
 
 }
 
 @media (min-width: 1750px) {
     body {
-        padding: 0 16%;
+        padding: 0 13%;
     }
 }
 
 @media (min-width: 1700px) {
     body {
-        padding: 0 12%;
+        padding: 0 20%;
     }
 }
