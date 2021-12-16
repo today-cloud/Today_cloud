@@ -27,7 +27,7 @@ router.post('/login',(req,res)=>{
       req.session.uid = result[0].user_Num;
       req.session.save(function(err){
         console.log('login success');
-        res.redirect('../indexAll');
+        res.redirect('/');
       });
     }
   });

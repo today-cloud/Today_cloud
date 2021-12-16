@@ -128,24 +128,6 @@ router.get('/',(req,res)=>{
   });
 });
 
-router.get('/indexAll',(req,res)=>{
-  if(req.session.uid){
-    user_sql(req,function(user){
-      main_latest_sort(function(info){
-        tag_sql(function(tag){
-          board_good(req,function(board){
-            login_session(req,function(ck){
-              console.log('ck check indexAll check');
-              console.log(ck);
-              res.render('main',{info:info,tag:tag,board_good:board,ck:ck});
-            });
-          });
-        });
-      });
-    });
-  }else{
-    res.redirect('/login');
-  }
   // user_sql(req,function(user){
   //   board_sql(function(board){
   //     tag_sql(function(tag){
