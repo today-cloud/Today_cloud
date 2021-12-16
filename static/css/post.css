@@ -43,13 +43,6 @@ body {
     padding: 3%;
 }
 
-.avatar {
-    width: 80px;
-    height: 80px;
-    display: block;
-    border-radius: 20px;
-}
-
 .post .post-heading .meta .title {
     margin-bottom: 0;
 }
@@ -95,11 +88,6 @@ body {
     display: block;
     width: 100%;
     margin: 20px 0;
-}
-
-.post .post-footer .comments-list .comment .avatar {
-    width: 35px;
-    height: 35px;
 }
 
 .post .post-footer .comments-list .comment .comment-heading {
