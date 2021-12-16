@@ -47,7 +47,6 @@
   function displayMarker(locPosition) {
   // 지도 중심좌표를 접속위치로 변경합니다
   map.setCenter(locPosition);
-  console.log(locPosition);
 }
 
   // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
@@ -59,8 +58,6 @@
     let locPosition = new kakao.maps.LatLng(lat, lon); // geolocation으로 얻어온 좌표로 생성합니다
     // 현재 위치를 가져옵니다
     displayMarker(locPosition);
-    console.log('lat: ', lat);
-    console.log('lon: ', lon);
   });
 } else { // HTML5의 GeoLocation을 사용할 수 없을때 중심좌표로 기본 설정
   let locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
