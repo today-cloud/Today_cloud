@@ -17,6 +17,7 @@ const deleteId = require('./delete');
 const userinfo = require('./userinfo');
 const post = require('./post');
 
+
 router.use('/', main)
 router.use('/', signup)
 router.use('/', login)
