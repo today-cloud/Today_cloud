@@ -251,11 +251,12 @@
                                                 fill="#1C1C1C" />
                                         </svg>
                                     </button>
+                                    <!-- 좋아요 -->
                                     <input type="number" class="like-number" value="0">
 
                                     <!-- ******주목******* 참고해주세요 -->
 
-                                    <!-- <%
+                                     <%
                                             for(var b = 0; b<board_good.length;b++){
                                                 if(board_good[b].board_Num == info[i].bnum){
                                         %>
@@ -272,7 +273,7 @@
                                     <%
                                                 count=0;
                                             }
-                                        %> -->
+                                        %>
                                 </div>
                             </div>
                             <div class="today-tags">
@@ -303,31 +304,7 @@
         </div>
     </div>
 
-    <script>
-        function no_login() {
-            document.getElementById("login_btn").classList.remove('d-none');
-            document.getElementById("signup_btn").classList.remove('d-none');
-            document.getElementById("logout_btn").classList.add('d-none');
-        }
 
-        function login_ok() {
-            document.getElementById("login_btn").classList.add('d-none');
-            document.getElementById("signup_btn").classList.add('d-none');
-            document.getElementById("logout_btn").classList.remove('d-none');
-        }
-
-        function t_c_info_on() {
-            location.href = "/t_c_info";
-        }
-
-        function login_on() {
-            location.href = "/login";
-        }
-
-        function signup_on() {
-            location.href = "/signup";
-        }
-    </script>
     <%
         if(ck==1) {
     %>

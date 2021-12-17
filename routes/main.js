@@ -11,6 +11,30 @@ var conn = mysql.createConnection({
   database: 'cloud'
 });
 
+function no_login() {
+  document.getElementById("login_btn").classList.remove('d-none');
+  document.getElementById("signup_btn").classList.remove('d-none');
+  document.getElementById("logout_btn").classList.add('d-none');
+}
+
+function login_ok() {
+  document.getElementById("login_btn").classList.add('d-none');
+  document.getElementById("signup_btn").classList.add('d-none');
+  document.getElementById("logout_btn").classList.remove('d-none');
+}
+
+function t_c_info_on() {
+  location.href = "/t_c_info";
+}
+
+function login_on() {
+  location.href = "/login";
+}
+
+function signup_on() {
+  location.href = "/signup";
+}
+
 function main_latest_sort(callback){
   const sql = `
 		select b.board_Num as bnum, u.user_Name, u.user_Profile, b.board_Content,count(distinct g.good_pk) as board_like, group_concat(distinct t.tag_Tagname) as tag
@@ -135,7 +159,7 @@ router.get('/',(req,res)=>{
   //     });
   //   });
   // });
-});
+
 
 // ############## main page - session check ##############
 // app.get('/main',(req,res)=>{
