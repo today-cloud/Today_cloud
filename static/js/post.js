@@ -6,13 +6,14 @@ $(document).ready (function (e) {
 
     $("#qc_tag").keydown(function(e) {
     var n_value = $("#qc_tag").val();
-    // var name = "<div name=tag_a"+n_num+">"+"# "+n_value+"&nbsp"+"<i class='fas fa-times btnDelete'></i></div>"
-    var name = "<div name="+tag_a[n_num]+">"+"# "+n_value+"&nbsp"+"<i class='fas fa-times btnDelete'></i></div>"
-        if ( n_num != 3 ) {
+    var name = "<div name=tag_a"+n_num+">"+"# "+n_value+"&nbsp"+"<i class='fas fa-times btnDelete'></i><input" +
+      " type='hidden' value='n_value' name='tag[]'></div>";
+        // var name = "<div name="+tag_a[n_num]+">"+"# "+n_value+"&nbsp"+"<i class='fas fa-times btnDelete'></i></div>"
+        if ( tag_a.length < 3 ) {
             if ( e.keyCode == 13 ) {
                 $('#content').append(name);
-                tag_a.push('tag_'+n_num);
                 n_num ++;
+                tag_a.push('tag_'+n_num);
                 $('#qc_tag').val("");
                 console.log(tag_a);
                 // tag_a로 값을 넣을 수 있도록 하기. (한가지로만 전달이 되는가 도 확인할 것.)
@@ -21,12 +22,15 @@ $(document).ready (function (e) {
             $("#qc_tag").attr("disabled", true);
             alert ("3개까지만 작성합니다.");
         }
+
     });
     $("#content").on('click', '.btnDelete', function () {
         $(this).closest('div').remove();
-        n_num --;
+        $( this ).closest( "input" ).remove();
+        // n_num --;
         tag_a.pop();
         $("#qc_tag").attr("disabled", false);
+        console.log(tag_a);
     });
 });
 
