@@ -3,17 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>좌표로 주소를 얻어내기</title>
-    <style>
-      .map_wrap {position:relative;width:100%;height:350px;}
-      .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px; background:#fff; z-index:1;padding:5px;}
-      #centerAddr {display:inline-block;margin-top:2px;font-weight: normal;}
-      /*.bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}*/ /*인포마커에 쓰이는 css*/
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/gps.css">
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78229e4d6e5940f60039b23b67120e22&libraries=services"></script>
 </head>
 <body>
 <div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden; display: block;"></div>
+    <div id="map"></div>
     <div class="hAddr">
         <span>현재 위치 : </span>
         <span id="centerAddr"></span>

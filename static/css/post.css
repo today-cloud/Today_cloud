@@ -1,10 +1,5 @@
 @charset "uft-8";
 
-body {
-    padding: 15%;
-    margin: 10px;
-}
-
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 58%;
