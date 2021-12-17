@@ -11,18 +11,6 @@ var conn = mysql.createConnection({
   database: 'cloud'
 });
 
-function no_login() {
-  document.getElementById("login_btn").classList.remove('d-none');
-  document.getElementById("signup_btn").classList.remove('d-none');
-  document.getElementById("logout_btn").classList.add('d-none');
-}
-
-function login_ok() {
-  document.getElementById("login_btn").classList.add('d-none');
-  document.getElementById("signup_btn").classList.add('d-none');
-  document.getElementById("logout_btn").classList.remove('d-none');
-}
-
 function t_c_info_on() {
   location.href = "/t_c_info";
 }
@@ -36,8 +24,9 @@ function signup_on() {
 }
 
 function main_latest_sort(callback){
-  const sql = `
-		select b.board_Num as bnum, u.user_Name, u.user_Profile, b.board_Content,count(distinct g.good_pk) as board_like, group_concat(distinct t.tag_Tagname) as tag
+    // select b.board_Num as bnum, u.user_Nick, u.user_Profile, b.board_Content,count(distinct g.good_pk) as board_like, group_concat(distinct t.tag_Tagname) as tag
+    const sql = `
+		select b.board_Num as bnum, u.user_Nick, u.user_Profile, b.board_Content,count(distinct g.good_pk) as board_like, group_concat(distinct t.tag_Tagname) as tag
 		from T_Board as b 
 		join T_User as u on b.user_Num = u.user_Num
 		left join T_Good as g on b.board_Num = g.board_Num
@@ -136,6 +125,22 @@ function login_session(req,callback){
     }
   });
 };
+
+router.post('/board_check',(req,res)=>{
+  
+  board_pk = req.body.board_pk;
+  const sql = `select u.user_Name, u.user_Profile, b.board_Title, b.board_Content,count(distinct g.good_pk) as board_like, group_concat(distinct t.tag_Tagname) as tag from T_Board as b 
+  join T_User as u on b.user_Num = u.user_Num left join T_Good as g on b.board_Num = g.board_Num left join T_Tag as t on b.board_Num = t.board_Num where b.board_Num = ${board_pk} group by b.board_Num;`;
+  conn.query(sql,function(err, result){
+    if(err){
+        console.log('불러오기 실패');
+        console.log(err);
+    }else{
+        console.log('불러오기 성공');
+        res.send(result);
+    }
+  });
+});
 
 // ##############  main page  ##################
 router.get('/',(req,res)=>{
