@@ -309,10 +309,10 @@
                                     </div>
                                     <div class="today-cloud-contents">
                                         <div class="today-tags">
-                                            <ul>
-                                                <li>태그01</li>
-                                                <li>태그02</li>
-                                                <li>태그003</li>
+                                            <ul id = "tag_list">
+                                                <li class="d-none"></li>
+                                                <li class="d-none"></li>
+                                                <li class="d-none"></li>
                                             </ul>
                                         </div>
                                         <h3 id="board_Title"></h3>
@@ -438,17 +438,32 @@
 
 <script>
   $('.board_check').click(function(e) {
-    console.log($(this).attr("value"));
     $.ajax({
       url: 'board_check',
       type: 'post',
       data: {"board_pk":$(this).attr("value")},
       success:function(data){
-        console.log(data[0]);
         $("#board_Title").text(data[0].board_Title);
         $("#user_nick").text(data[0].user_Name);
         $("#board_content").text(data[0].board_Content);
+        $("#board_like").val(data[0].board_like);
+        console.log(data[0].tag);
+        if(data[0].tag){
+            var t = data[0].tag.split(',');
+            for(var j=0;j<t.length;j++){
+                $("#tag_list li:nth-child("+(j+1)+")").text(t[j]).removeClass("d-none");
+                
+                // var list = "<li>"+t[j]+"</li>";
+                // $("#tag_list").append(list);
+            }
+        }
         $("#exampleModal01").modal('show');
+        $("#exampleModal01").on('hidden.bs.modal',function(){
+            for(var j=0;j<3;j++){
+                $("#tag_list").children('li').text();
+                $("#tag_list").children('li').addClass('d-none');
+            }
+        })
       },
       error:function(error){
         console.log(error);
