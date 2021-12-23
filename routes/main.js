@@ -1,7 +1,6 @@
 const express = require( 'express' );
 const path = require( 'path' );
 const mysql = require( 'mysql' );
-const querystring = require('querystring');
 const router = express.Router();
 
 
@@ -22,6 +21,10 @@ function login_on() {
 function signup_on() {
   location.href = "/signup";
 }
+
+function userinfo_on() {
+    location.href = "/userinfo";
+  }
 
 function main_latest_sort(callback){
     // select b.board_Num as bnum, u.user_Nick, u.user_Profile, b.board_Content,count(distinct g.good_pk) as board_like, group_concat(distinct t.tag_Tagname) as tag
@@ -126,18 +129,30 @@ function login_session(req,callback){
   });
 };
 
+
 router.post('/board_check',(req,res)=>{
-  
   board_pk = req.body.board_pk;
   const sql = `select u.user_Name, u.user_Profile, b.board_Title, b.board_Content,count(distinct g.good_pk) as board_like, group_concat(distinct t.tag_Tagname) as tag from T_Board as b 
   join T_User as u on b.user_Num = u.user_Num left join T_Good as g on b.board_Num = g.board_Num left join T_Tag as t on b.board_Num = t.board_Num where b.board_Num = ${board_pk} group by b.board_Num;`;
+
+  const sql_comment = `select  u.user_Profile, u.user_Nick,c.comment_Image, c.comment_Content, count(distinct cl.like_pk) as comment_like
+  from T_Comment as c
+  join T_User as u on u.user_Num = c.user_Num
+  left join T_Commentlike as cl on cl.comment_Num = c.comment_Num
+  where c.board_Num = ${board_pk}
+  group by c.comment_Num;`;
   conn.query(sql,function(err, result){
     if(err){
-        console.log('불러오기 실패');
         console.log(err);
     }else{
-        console.log('불러오기 성공');
-        res.send(result);
+        conn.query(sql_comment,function(err,results){
+            if(err){
+                console.log(err)
+            }else{
+                res.send({board:result,comment:results});
+            }
+        })
+        
     }
   });
 });

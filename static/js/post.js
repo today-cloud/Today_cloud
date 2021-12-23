@@ -79,3 +79,82 @@ $(document).ready(function(){
         }
     });
 });
+$('.board_check').click(function(e) {
+    $.ajax({
+    url: 'board_check',
+    type: 'post',
+    data: {"board_pk":$(this).attr("value")},
+    success:function(data){
+        console.log(data.comment);
+        $("#board_Title").text(data.board[0].board_Title);
+        $("#user_nick").text(data.board[0].user_Name);
+        $("#board_content").text(data.board[0].board_Content);
+        $("#board_like").val(data.board[0].board_like);
+        console.log(data.board[0].tag);
+        if(data.board[0].tag){
+            var t = data.board[0].tag.split(',');
+            for(var j=0;j<t.length;j++){
+                $("#tag_list li:nth-child("+(j+1)+")").text(t[j]).removeClass("d-none");
+                
+                // var list = "<li>"+t[j]+"</li>";
+                // $("#tag_list").append(list);
+            }
+        }
+        for(var i=0;i<data.comment.length;i++){
+            $("#comment_list").append(`
+            <li class="comment">
+                                <a class="pull-left" href="#">
+                                    <div class="user-profile">
+                                        <img src="img/logo.png" alt="">
+                                    </div>
+                                </a>
+                                <div class="comment-body">
+                                    <div class="comment-heading">
+                                        <h4 class="user">${data.comment[i].user_Nick}</h4>
+                                        <h5 class="post-time">5 minutes ago</h5>
+                                        <div class="post-like">
+                                            <button class="heart-icon">
+                                                <svg width="60" height="30" viewBox="0 0 76 59" fill="none">
+                                                    <!-- 회색하트 -->
+                                                    <path opacity="0.8" fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M44.1 14.7742C51.2736 1.93619 75.95 6.41968 75.95 24.9662C75.95 37.3632 65.3317 48.6724 44.1 58.9134C22.8683 48.6724 12.25 37.3583 12.25 24.9662C12.25 6.41968 36.9264 1.93619 44.1 14.7742V14.7742Z"
+                                                        fill="#1C1C1C" class="redchange" id="gray-h" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M35.3633 56.2185C57.3545 45.6149 68.6 33.6295 68.6 20.0663C68.6 1.37278 44.786 -6.12912 34.3 5.66028C23.814 -6.12912 0 1.37278 0 20.0663C0 33.6295 11.2455 45.6149 33.2367 56.2185L34.3 56.733L35.3633 56.2185V56.2185ZM36.4413 11.0699C42.8505 -0.405915 63.7 5.01348 63.7 20.0663C63.7 31.0913 54.0617 41.5577 34.3 51.2891C14.5383 41.5577 4.9 31.0913 4.9 20.0663C4.9 5.01348 25.7495 -0.405915 32.1636 11.0699C32.1636 11.0699 33.2318 12.5301 34.3 12.5301C35.3682 12.5301 36.4413 11.0699 36.4413 11.0699V11.0699Z"
+                                                        fill="#1C1C1C" />
+                                                </svg>
+                                            </button>
+                                            <input type="number" class="like-number" value="${data.comment[i].comment_like}">
+                                        </div>
+                                        </br>
+                                        <div class="map_wrap">
+                                            <div id="map"></div>
+                                            <div class="hAddr">
+                                                <h5 class="post-location"></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>${data.comment[i].comment_Content}</p>
+                                </div>
+                            </li>
+            `);
+        }
+        
+        $("#exampleModal01").modal('show');
+        $("#exampleModal01").on('hidden.bs.modal',function(){
+            for(var j=0;j<3;j++){
+                $("#tag_list").children('li').text();
+                $("#tag_list").children('li').addClass('d-none');
+            }
+        });
+        $("#exampleModal01").on('hidden.bs.modal',function(){
+            for(var i=0;i<data.comment.length;i++){
+                $("#comment_list").empty();
+            }
+        });
+    },
+    error:function(error){
+    console.log(error);
+    }
+    });
+});
