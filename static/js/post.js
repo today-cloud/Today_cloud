@@ -6,8 +6,9 @@ $(document).ready (function (e) {
 
     $("#qc_tag").keydown(function(e) {
     var n_value = $("#qc_tag").val();
-    var name = "<div name=tag_a"+n_num+">"+"# "+n_value+"&nbsp"+"<i class='fas fa-times btnDelete'></i><input" +
-      " type='hidden' value="+n_num+" name='tag[]'></div>";
+    let name_num = 'tag_a' + n_num
+    var name = "<div name="+name_num+">"+"# "+n_value+"&nbsp"+"<i class='fas fa-times btnDelete'></i><input" +
+      " type='hidden' value="+n_num+" name="+name_num+"></div>";
         // var name = "<div name="+tag_a[n_num]+">"+"# "+n_value+"&nbsp"+"<i class='fas fa-times btnDelete'></i></div>"
         if ( tag_a.length < 3 ) {
             if ( e.keyCode == 13 ) {
